@@ -6,12 +6,12 @@ export default function StreamerGrid() {
 
     return (
         <Grid container spacing={3}>
-            <Grid item><Streamer/></Grid>
-            <Grid item><Streamer/></Grid>
-            <Grid item><Streamer/></Grid>
-            <Grid item><Streamer/></Grid>
-            <Grid item><Streamer/></Grid>
-            <Grid item><Streamer/></Grid>
+            <Grid item><Streamer demo/></Grid>
+            <Grid item><Streamer demo/></Grid>
+            <Grid item><Streamer demo/></Grid>
+            <Grid item><Streamer demo/></Grid>
+            <Grid item><Streamer demo/></Grid>
+            <Grid item><Streamer demo/></Grid>
         </Grid>
     );
 }
