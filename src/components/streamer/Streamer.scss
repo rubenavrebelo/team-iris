@@ -1,0 +1,32 @@
+.GradientBorder {
+  position: relative;
+  width: 40vh;
+  height: 40vh;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  background: #020117;
+  cursor: pointer;
+}
+
+.GradientBorder::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  z-index: -1;
+}
+.GradientBorder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  z-index: -2;
+  filter: blur(40px);
+}
