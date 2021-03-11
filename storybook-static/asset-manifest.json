@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "./static/css/main.f8a5c884.chunk.css",
+    "main.js": "./main.fe0ad0e30525cde1d719.bundle.js",
+    "main.css.map": "./static/css/main.f8a5c884.chunk.css.map",
+    "main.js.map": "./main.fe0ad0e30525cde1d719.bundle.js.map",
+    "runtime~main.js": "./runtime~main.fe0ad0e30525cde1d719.bundle.js",
+    "runtime~main.js.map": "./runtime~main.fe0ad0e30525cde1d719.bundle.js.map",
+    "vendors~main.js": "./vendors~main.fe0ad0e30525cde1d719.bundle.js",
+    "vendors~main.js.map": "./vendors~main.fe0ad0e30525cde1d719.bundle.js.map",
+    "iframe.html": "./iframe.html",
+    "static/media/code-brackets.2e1112d7.svg": "./static/media/code-brackets.2e1112d7.svg",
+    "static/media/colors.a4bd0486.svg": "./static/media/colors.a4bd0486.svg",
+    "static/media/comments.a3859089.svg": "./static/media/comments.a3859089.svg",
+    "static/media/direction.b770f9af.svg": "./static/media/direction.b770f9af.svg",
+    "static/media/eevo_pose.7c3d80a0.gif": "./static/media/eevo_pose.7c3d80a0.gif",
+    "static/media/eevolicious.18ab24fe.jpg": "./static/media/eevolicious.18ab24fe.jpg",
+    "static/media/flow.edad2ac1.svg": "./static/media/flow.edad2ac1.svg",
+    "static/media/plugin.d494b228.svg": "./static/media/plugin.d494b228.svg",
+    "static/media/repo.6d496322.svg": "./static/media/repo.6d496322.svg",
+    "static/media/stackalt.dba9fbb3.svg": "./static/media/stackalt.dba9fbb3.svg",
+    "vendors~main.fe0ad0e30525cde1d719.bundle.js.LICENSE.txt": "./vendors~main.fe0ad0e30525cde1d719.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.fe0ad0e30525cde1d719.bundle.js",
+    "vendors~main.fe0ad0e30525cde1d719.bundle.js",
+    "static/css/main.f8a5c884.chunk.css",
+    "main.fe0ad0e30525cde1d719.bundle.js"
+  ]
+}
