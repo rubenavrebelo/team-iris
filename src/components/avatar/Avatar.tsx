@@ -13,6 +13,6 @@ export default function Avatar() {
         setHover(false);
     }
 
-    return (<img src={!hover ? static_eevo : gif_eevo} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'} 
+    return (<img src={!hover ? static_eevo : 'https://i.imgur.com/hhlkqDf.gif'} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'} 
     style={{width: '100%'}}/>);
 }
