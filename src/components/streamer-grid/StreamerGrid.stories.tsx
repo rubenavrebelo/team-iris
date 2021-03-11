@@ -3,13 +3,18 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import StreamerGrid  from './StreamerGrid';
+import { StreamerObject } from '../../types/types';
 
 export default {
   title: 'Streamer Grid',
   component: StreamerGrid,
 } as Meta;
 
-const Template: Story = (args) => <StreamerGrid {...args} />;
+const setStreamerInfo = (streamer: StreamerObject) => {
+  console.log(streamer);
+}
+
+const Template: Story = (args) => <StreamerGrid setStreamerInfo={setStreamerInfo} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
