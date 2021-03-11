@@ -3,7 +3,7 @@ import * as React from 'react';
 import './Navbar.scss';
 import grey from '@material-ui/core/colors/grey';
 import pink from '@material-ui/core/colors/pink';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 
 const navbarColor = grey[900];

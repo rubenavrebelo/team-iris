@@ -1,6 +1,5 @@
 import { Card, CardContent, createMuiTheme, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@material-ui/core';
 import * as React from 'react';
-import ReactPlayer from 'react-player';
 import './StreamerDetails.scss';
 
 let theme = createMuiTheme();
