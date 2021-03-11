@@ -1,23 +1,25 @@
 import * as React from 'react';
+import { Eevo, StreamerObject } from '../../types/types';
 import Avatar from '../avatar/Avatar';
-import StreamerDetails from '../streamer-details/StreamerDetails';
 import './Streamer.scss';
+import { animateScroll as scroll } from 'react-scroll'
 
-interface demoProps {
-    demo?: boolean;
+
+export interface StreamerProps {
+    setStreamerInfo: (streamer: StreamerObject) => void;
 }
 
-export default function Streamer(props: demoProps) {
+export default function Streamer(props: StreamerProps) {
 
-    const [modal, setModal] = React.useState<boolean>(false);
-    const activeModal = () => {
-        setModal(!modal)
+    const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        props.setStreamerInfo(Eevo)
+        scroll.scrollTo(0);
     }
 
     return (
         <div>
-            {!props.demo && modal && <StreamerDetails/>}
-            <div className="GradientBorder" onClick={activeModal}>
+            <div className="GradientBorder" onClick={handleClick}>
                 <Avatar/>
             </div>
         </div>  
