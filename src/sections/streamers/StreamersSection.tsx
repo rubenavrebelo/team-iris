@@ -14,7 +14,7 @@ export default function StreamerSection() {
 
     return (
         <div id='streamers' style={{minHeight: '100vh', marginTop: 20}}>
-            {streamerInfo != null ? <StreamerDetails/> : <div style={{minHeight: '60vh', textAlign: 'center'}}><img src={logo} alt={'phenomena'}/></div>}
+            {streamerInfo != null ? <StreamerDetails streamer={streamerInfo}/> : <div style={{minHeight: '60vh', textAlign: 'center'}}><img src={logo} alt={'phenomena'}/></div>}
             <StreamerGrid setStreamerInfo={setStreamer}/>
         </div>
     );

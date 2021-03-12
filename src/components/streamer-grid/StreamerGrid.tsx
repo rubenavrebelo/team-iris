@@ -11,7 +11,7 @@ export default function StreamerGrid(props: StreamerGridProps) {
     const {setStreamerInfo} = props;
 
     return (
-        <Grid container spacing={3} justify={'space-evenly'} style={{width: '90%', margin: '0 auto'}}>
+        <Grid id={'streamers-grid'} container spacing={3} justify={'space-evenly'} style={{width: '90%', margin: '0 auto'}}>
             <Grid item><Streamer setStreamerInfo={setStreamerInfo}/></Grid>
             <Grid item><Streamer setStreamerInfo={setStreamerInfo}/></Grid>
             <Grid item><Streamer setStreamerInfo={setStreamerInfo}/></Grid>
