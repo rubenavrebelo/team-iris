@@ -10,7 +10,7 @@ export interface TextSectionProps {
 export default function TextSection(props: TextSectionProps) {
     const {alignment} = props;
     return (
-        <div id={`${props.sectionTitle}-section`} style={{marginTop: 70, textAlign: alignment ? alignment: 'left'}}>
+        <div id={`${props.sectionTitle.replace(/\s/g, '-').toLowerCase()}-section`} style={{marginTop: 70, textAlign: alignment ? alignment: 'left'}}>
             <div style={{width: '90%', margin: '0 auto'}}>
                 <Typography variant={'caption'}>This line is just for demo purposes.</Typography>
                 <div style={{width: '100%', height: 2, backgroundColor: 'black'}}/>
