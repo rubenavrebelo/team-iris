@@ -9,8 +9,13 @@ import logo from '../../media/logo_draft.png';
 const navbarColor = grey[900];
 const hoverColor = pink[200];
 
-export default function Navbar() {
-    const [showNav, setShowNav] = React.useState<boolean>(false);
+export interface NavbarProps {
+  section?: string;
+  setCurrentSection: (section: string) => void;
+}
+
+export default function Navbar(props: NavbarProps) {
+  const [showNav, setShowNav] = React.useState<boolean>(false);
     
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -58,20 +63,26 @@ export default function Navbar() {
         }
         else setShowNav(false)
       }
-      
     }
 
+    const handleClick = () => {
+      // setCurrentSection(event.target);
+    }
+
+    console.log(props.section, )
     return (
     <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
     elevation={showNav? 2 : 0}>
         <Toolbar className={classes.toolbar}>
-            <img src={logo} style={{height: '9vh'}}/>
+            <img src={logo} style={{height: '9vh'}} alt={'logo'}/>
              {/*<Typography variant="h6" style={{flexGrow: 1}}>
             Logo
             </Typography>*/}
             <div style={{marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
-            <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true}><Typography className={classes.typo}>Section 1</Typography></Link>
-            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo}>Section 2</Typography></Link>
+            <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
+              <Typography className={classes.typo}>Section 1</Typography>
+              </Link>
+            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo}>Section 2</Typography></Link>
             <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo}>Section 3</Typography></Link>
             </div>
         </Toolbar>
