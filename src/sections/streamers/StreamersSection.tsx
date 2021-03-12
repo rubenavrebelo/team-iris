@@ -7,7 +7,14 @@ import logo from '../../media/logo_draft.png';
 export default function StreamerSection() {
 
     const [streamerInfo, setStreamerInfo] = React.useState<StreamerObject | null>(null);
+    const ref = React.useRef<HTMLDivElement>(null)
 
+    React.useEffect(() => {
+        if(ref.current !== null) {
+            // ref.current.clientHeight;
+        }
+      });
+  
     const setStreamer = (streamer: StreamerObject) => {
         setStreamerInfo(streamer);
     }

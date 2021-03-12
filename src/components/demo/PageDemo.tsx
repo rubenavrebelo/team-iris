@@ -10,9 +10,15 @@ const footbarColor = grey[900];
 
 export default function PageDemo() {
 
+    const [currentSection, setSection] = React.useState<string>('');
+
+    const setCurrentSection = (section: string) => {
+        setSection(section);
+    }
+
     return (
         <div id={'main'}>
-            <Navbar />
+            <Navbar section={currentSection} setCurrentSection={setCurrentSection}/>
             <StreamerSection />
             <TextSection sectionTitle={'Test'} />
             <TextSection sectionTitle={'On the Right'} alignment={'right'}/>
