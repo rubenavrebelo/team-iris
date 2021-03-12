@@ -4,7 +4,7 @@ import './Navbar.scss';
 import grey from '@material-ui/core/colors/grey';
 import pink from '@material-ui/core/colors/pink';
 import { Link } from "react-scroll";
-
+import logo from '../../media/logo_draft.png';
 
 const navbarColor = grey[900];
 const hoverColor = pink[200];
@@ -25,17 +25,18 @@ export default function Navbar() {
           cursor: 'pointer',
           marginRight: 10,
           marginLeft: 10,
-          height: '100%',
-          display: 'table',
+          display: 'table-cell',
+        verticalAlign: 'middle',
           '&:hover': {
             color: hoverColor,
             textDecoration: 'none'
-          }
+          },
       },
       typo: {
-        display: 'table-cell',
-        verticalAlign: 'middle',
         fontWeight: 500
+      },
+      toolbar: {
+        height: '100%'
       }
     }),
   );
@@ -61,15 +62,18 @@ export default function Navbar() {
     }
 
     return (
-    <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}>
-        <Toolbar>
-            {/*            <img src={logo} style={{flexGrow: 1}}/>*/}
-            <Typography variant="h6" style={{flexGrow: 1}}>
+    <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
+    elevation={showNav? 2 : 0}>
+        <Toolbar className={classes.toolbar}>
+            <img src={logo} style={{height: '9vh'}}/>
+             {/*<Typography variant="h6" style={{flexGrow: 1}}>
             Logo
-            </Typography>
-            <Link className={classes.section} to={'streamers'} smooth={true}><Typography className={classes.typo}>Section 1</Typography></Link>
-            <Link className={classes.section} to={'streamers'}><Typography className={classes.typo}>Section 2</Typography></Link>
-            <Link className={classes.section} to={'streamers'}><Typography className={classes.typo}>Section 3</Typography></Link>
+            </Typography>*/}
+            <div style={{marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
+            <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true}><Typography className={classes.typo}>Section 1</Typography></Link>
+            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo}>Section 2</Typography></Link>
+            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo}>Section 3</Typography></Link>
+            </div>
         </Toolbar>
     </AppBar>
     );
