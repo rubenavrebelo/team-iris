@@ -4,6 +4,7 @@ import TextSection from '../../sections/text-section/TextSection';
 import Navbar from '../navbar/Navbar';
 import grey from '@material-ui/core/colors/grey';
 import { Typography } from '@material-ui/core';
+import './Demo.scss';
 
 const footbarColor = grey[900];
 
@@ -23,8 +24,14 @@ export default function PageDemo() {
             <TextSection sectionTitle={'Test'} />
             <TextSection sectionTitle={'On the Right'} alignment={'right'}/>
             <TextSection sectionTitle={'On the Center'} alignment={'center'}/>
-            <footer style={{height: 100, width: '100%', backgroundColor: footbarColor}}>
-                <Typography style={{color: 'white', marginTop: 50}}>Made with love</Typography>
+            <footer className={'footer'} style={{backgroundColor: footbarColor}}>
+                <div className={'contacts'}>
+                    <Typography style={{color: 'white'}} variant={'h6'}>Contacts</Typography>
+                    <Typography>team@phenomena.com</Typography>
+                </div>
+                <div className={'socials'}>
+                    <Typography style={{color: 'white'}} variant={'h6'}>Socials</Typography>
+                </div>
             </footer>
         </div>
     );

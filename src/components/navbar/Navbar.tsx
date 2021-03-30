@@ -42,6 +42,14 @@ export default function Navbar(props: NavbarProps) {
       },
       toolbar: {
         height: '100%'
+      },
+      navigation: {
+        marginLeft: 'auto', 
+        float: 'right', 
+        height: '100%', 
+        display: 'table', 
+        borderSpacing: 26, 
+        borderCollapse: 'separate'
       }
     }),
   );
@@ -75,10 +83,7 @@ export default function Navbar(props: NavbarProps) {
     elevation={showNav? 2 : 0}>
         <Toolbar className={classes.toolbar}>
             <img src={logo} style={{height: '9vh'}} alt={'logo'}/>
-             {/*<Typography variant="h6" style={{flexGrow: 1}}>
-            Logo
-            </Typography>*/}
-            <div style={{marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
+            <div className={classes.navigation}>
             <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
               <Typography className={classes.typo}>Section 1</Typography>
               </Link>

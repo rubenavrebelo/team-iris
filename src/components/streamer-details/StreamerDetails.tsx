@@ -1,8 +1,11 @@
-import { Card, CardContent, createMuiTheme, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@material-ui/core';
+import { Avatar, ButtonBase, Card, CardContent, createMuiTheme, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@material-ui/core';
 import * as React from 'react';
 import { StreamerObject } from '../../types/types';
 import GenderBits from '../gender-bits/GenderBits';
 import './StreamerDetails.scss';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
 
 export interface StreamerDetailsProps {
     streamer: StreamerObject
@@ -20,8 +23,12 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
     return (
         <div style={{width: '95%', margin: '0 auto', marginBottom: 20}} id={'streamers-details'}>
         <Grid container spacing={2}>
-            <Grid item xs={1}>
-                Next
+            <Grid item xs={1} style={{display: 'flex', alignItems: 'center'}}>
+                <ButtonBase style={{margin: '0 auto'}}>
+                    <Avatar>
+                        <ChevronLeftIcon fontSize={'large'}/>
+                    </Avatar>
+                </ButtonBase>
             </Grid>
             <Grid item xs={7}>
                 <div className={'player-wrapper'}> 
@@ -42,8 +49,12 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 </CardContent>
                 </Card>
             </Grid>
-            <Grid item xs>
-                Previous
+            <Grid item xs style={{display: 'flex', alignItems: 'center'}}>
+                <ButtonBase style={{margin: '0 auto'}}>
+                <Avatar>
+                    <ChevronRightIcon fontSize={'large'}/>
+                </Avatar>
+                </ButtonBase>
             </Grid>
         </Grid>
         </div>

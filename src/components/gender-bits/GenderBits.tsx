@@ -20,6 +20,8 @@ export default function GenderBits(props: GenderBitsProps) {
     const classes = useStyles();
 
     return (<div className={'gender-bit'}>
-        <Typography className={classes.genderText}>{Pronouns[props.pronoun]}</Typography>
+        <Typography className={classes.genderText}>
+            {Pronouns[props.pronoun]}
+        </Typography>
     </div>);
 }
