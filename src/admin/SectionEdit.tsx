@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Edit, ReferenceInput, SimpleForm, TextInput } from 'react-admin';
+import { Edit, SimpleForm, TextInput, Create} from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
-import SelectInput from '@material-ui/core/Select/SelectInput';
-import { Create } from '@material-ui/icons';
 
 
 /*const SectionEdit = ({ permissions, ...props }: any) => (

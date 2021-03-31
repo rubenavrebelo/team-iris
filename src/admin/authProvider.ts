@@ -1,4 +1,4 @@
-export default {
+export const authProvider = {
     // called when the user attempts to log in
     login: ({ username }: any) => {
         localStorage.setItem('username', username);

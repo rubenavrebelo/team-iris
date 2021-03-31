@@ -1,4 +1,3 @@
-import { useMediaQuery } from "@material-ui/core";
 import * as React from "react";
 import { List, Datagrid, TextField, EmailField, EditButton, ReferenceField } from 'react-admin';
 

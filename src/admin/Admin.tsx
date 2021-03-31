@@ -1,9 +1,9 @@
 // in src/App.js
 import * as React from "react";
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import { PostList, UserList } from "./Streamer-List";
-import authProvider from "./authProvider";
+import {authProvider} from "./authProvider";
 import { PostEdit } from "./SectionEdit";
 import Dashboard from './Dashboard';
 
