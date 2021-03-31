@@ -32,3 +32,9 @@ export const Eevo : StreamerObject = {
     pronouns: ['he', 'she'],
     trailerUrl: 'https://www.youtube.com/embed/rsxNclwPTvw?controls=0'
 }
+
+export interface SectionObject {
+    id: number;
+    title: string;
+    body: string; 
+}
