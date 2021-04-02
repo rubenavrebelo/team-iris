@@ -69,7 +69,6 @@ export default function Navbar(props: NavbarProps) {
       // setCurrentSection(event.target);
     }
 
-    console.log(props.section, )
     return (
     <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
     elevation={showNav? 2 : 0}>

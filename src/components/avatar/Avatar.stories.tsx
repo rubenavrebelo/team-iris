@@ -3,13 +3,14 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Avatar  from './Avatar';
+import { Eevo } from '../../types/types';
 
 export default {
   title: 'Avatar',
   component: Avatar,
 } as Meta;
 
-const Template: Story = (args) => <Avatar {...args} />;
+const Template: Story = (args) => <Avatar streamer={Eevo} {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Streamer, {StreamerProps} from './Streamer';
-import { StreamerObject } from '../../types/types';
+import { Eevo, StreamerObject } from '../../types/types';
 
 export default {
   title: 'Streamer',
@@ -14,7 +14,7 @@ const setStreamerInfo = (streamer: StreamerObject) => {
   console.log(streamer);
 }
 
-const Template: Story<StreamerProps> = (args) => <Streamer setStreamerInfo={setStreamerInfo} />;
+const Template: Story<StreamerProps> = (args) => <Streamer streamer={Eevo} setStreamerInfo={setStreamerInfo} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
