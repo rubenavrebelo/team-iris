@@ -10,15 +10,11 @@ const dataProvider = jsonServerProvider("http://localhost:8080");
     reader.onerror = reject;
 });
 
-/**
- * For posts update only, convert uploaded image in base 64 and attach it to
- * the `picture` sent property, with `src` and `title` attributes.
- */
  const myDataProvider = {
     ...dataProvider,
     update: (resource: any, params: any) => {
-        console.log(params.data);
-        if (resource !== 'streamers' || !params.data.avatar) {
+        console.log(params.data.avatar);
+        if (resource !== 'streamers' || !params.data.avatar || typeof params.data.avatar === 'string') {
             return dataProvider.update(resource, params);
         }
 
