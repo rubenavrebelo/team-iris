@@ -1,4 +1,5 @@
 export interface StreamerObject {
+    id: number;
     username: string;
     description: string;
     url: string;
@@ -12,19 +13,20 @@ export interface PronounsObject {
 }
 
 export const Pronouns: PronounsObject = {
-    ['He/Him']: 'He/Him',
-    ['She/Her']: 'She/Her',
-    ['They/Them']: 'They/Them',
-    ['It/Its']: 'It/Its',
-    ['Per/Per']: 'Per/Per',
-    ['Ve/Ver']: 'Ve/Ver',
-    ['Xe/Xem']: 'Xe/Xem',
-    ['Zie/Hir']: 'Zie/Hir',
-    ['Other']: 'Other'
+    he: 'He/Him',
+    she: 'She/Her',
+    they: 'They/Them',
+    it: 'It/Its',
+    per: 'Per/Per',
+    ve: 'Ve/Ver',
+    xe: 'Xe/Xem',
+    zie: 'Zie/Hir',
+    other: 'Other'
 }
 
 // Dummy Streamer Object for testing
 export const Eevo : StreamerObject = {
+    id: 0,
     username: 'Eevolicious',
     description: `Your favorite Portuguese chaotic magical girl who's sole purpose is to be stanned by you. Her favorite color is "homophonic tears" and her favorite wig is a broccoli. If you just found out about the channel, you're late, hurry up and follow.`,
     url: 'https://www.twitch.tv/eevolicious',

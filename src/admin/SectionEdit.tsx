@@ -3,7 +3,7 @@ import { Edit, SimpleForm, TextInput, Create} from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
 
 
-/*const SectionEdit = ({ permissions, ...props }: any) => (
+const SectionEdit = ({ permissions, ...props }: any) => (
 
     <Edit {...props}>
         <TextInput disabled label="Id" source="id" />
@@ -12,24 +12,4 @@ import RichTextInput from 'ra-input-rich-text';
     </Edit>
 );
 
-export default SectionEdit;*/
-
-export const PostEdit = (props: any) => (
-    <Edit {...props}>
-        <SimpleForm>
-            <TextInput source="id" />
-            <TextInput source="title" />
-            <RichTextInput source="body" validation={{ required: true }} />
-        </SimpleForm>
-    </Edit>
-);
-
-export const PostCreate = (props: any) => (
-        <Create {...props}>
-            <SimpleForm>
-                <TextInput source="id" />
-                <TextInput source="title" />
-                <TextInput multiline source="body" />
-            </SimpleForm>
-        </Create>
-    );
+export default SectionEdit;
