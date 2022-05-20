@@ -9,7 +9,7 @@ export default {
   component: StreamerSection,
 } as Meta;
 
-const Template: Story = (args) => <StreamerSection {...args} />;
+const Template: Story = (args: any) => <StreamerSection {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

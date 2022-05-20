@@ -1,11 +1,12 @@
-import { Avatar, ButtonBase, Card, CardContent, createMuiTheme, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@material-ui/core';
+import { Avatar, ButtonBase, Card, CardContent, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@mui/material';
+import { createTheme } from '@mui/material/styles'
 import * as React from 'react';
 import { StreamerObject } from '../../types/types';
 import GenderBits from '../gender-bits/GenderBits';
 import './StreamerDetails.scss';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ReactHtmlParser from 'react-html-parser';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import parse from "html-react-parser";
 
 export interface StreamerDetailsProps {
     streamer: StreamerObject
@@ -16,7 +17,7 @@ export interface StreamerDetailsProps {
     position: number;
 }
 
-let theme = createMuiTheme();
+let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 export default function StreamerDetails(props: StreamerDetailsProps) {
@@ -59,7 +60,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                     <div>
                         {genGenderBits()}
                     </div>
-                    <Typography variant={'body2'} style={{fontSize: '1.2vw'}} >{ReactHtmlParser(streamer.description)}</Typography>
+                    <Typography variant={'body2'} style={{fontSize: '1.2vw'}} >{parse(streamer.description)}</Typography>
                 </ThemeProvider>
                 </CardContent>
                 </Card>

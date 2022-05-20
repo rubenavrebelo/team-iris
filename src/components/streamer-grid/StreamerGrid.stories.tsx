@@ -14,7 +14,7 @@ const setStreamerInfo = (streamer: StreamerObject) => {
   console.log(streamer);
 }
 
-const Template: Story = (args) => <StreamerGrid streamers={[]} setStreamerInfo={setStreamerInfo} />;
+const Template: Story = (args: any) => <StreamerGrid streamers={[]} setStreamerInfo={setStreamerInfo} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

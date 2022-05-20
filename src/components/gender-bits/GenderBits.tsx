@@ -1,23 +1,23 @@
-import { makeStyles, Typography, Theme, createStyles } from '@material-ui/core';
+import { Typography, Theme } from '@mui/material';
 import * as React from 'react';
 import { Pronouns } from '../../types/types';
 import './GenderBits.scss';
+import { makeStyles } from 'tss-react/mui';
+
 
 export interface GenderBitsProps {
     pronoun: string
 }
 
-export default function GenderBits(props: GenderBitsProps) {
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-        genderText: {
-            color: 'white',
-            fontSize: '0.7vw'
-        }
-        }),
-    );
+const useStyles = makeStyles()((theme) => ({
+    genderText: {
+        color: 'white',
+        fontSize: '0.7vw'
+    }
+  }));
 
-    const classes = useStyles();
+export default function GenderBits(props: GenderBitsProps) {
+    const { classes } = useStyles();
 
     return (<div className={'gender-bit'}>
         <Typography className={classes.genderText}>

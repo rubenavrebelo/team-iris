@@ -10,7 +10,7 @@ export default {
   component: Avatar,
 } as Meta;
 
-const Template: Story = (args) => <Avatar streamer={Eevo} {...args} />;
+const Template: Story = (args: any) => <Avatar streamer={Eevo} {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

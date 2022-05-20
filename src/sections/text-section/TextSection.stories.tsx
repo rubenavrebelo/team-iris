@@ -9,7 +9,7 @@ export default {
   component: TextSection,
 } as Meta;
 
-const Template: Story<TextSectionProps> = (args) => <TextSection {...args} />;
+const Template: Story<TextSectionProps> = (args: any) => <TextSection {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

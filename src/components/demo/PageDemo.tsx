@@ -2,8 +2,8 @@ import * as React from 'react';
 import StreamerSection from '../../sections/streamers/StreamersSection';
 import TextSection from '../../sections/text-section/TextSection';
 import Navbar from '../navbar/Navbar';
-import grey from '@material-ui/core/colors/grey';
-import { Typography } from '@material-ui/core';
+import grey from '@mui/material/colors/grey';
+import { Typography } from '@mui/material';
 import './Demo.scss';
 
 const footbarColor = grey[900];

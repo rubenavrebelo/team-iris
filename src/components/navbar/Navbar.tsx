@@ -1,10 +1,11 @@
-import { AppBar, createStyles, makeStyles, Theme, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, createStyles, Theme, Toolbar, Typography } from '@mui/material';
 import * as React from 'react';
 import './Navbar.scss';
-import grey from '@material-ui/core/colors/grey';
-import pink from '@material-ui/core/colors/pink';
+import grey from '@mui/material/colors/grey';
+import pink from '@mui/material/colors/pink';
 import { Link } from "react-scroll";
 import logo from '../../media/logo_draft.png';
+import { makeStyles } from 'tss-react/mui';
 
 const navbarColor = grey[900];
 const hoverColor = pink[200];
@@ -14,39 +15,37 @@ export interface NavbarProps {
   setCurrentSection: (section: string) => void;
 }
 
+
 export default function Navbar(props: NavbarProps) {
   const [showNav, setShowNav] = React.useState<boolean>(false);
-    
-  const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-      root: {
-        flexGrow: 1,
-      },
-      title: {
-        flexGrow: 1,
-      },
-      section: {
-          color: showNav ? 'white' : navbarColor,
-          cursor: 'pointer',
-          marginRight: 10,
-          marginLeft: 10,
-          display: 'table-cell',
-        verticalAlign: 'middle',
-          '&:hover': {
-            color: hoverColor,
-            textDecoration: 'none'
-          },
-      },
-      typo: {
-        fontWeight: 500
-      },
-      toolbar: {
-        height: '100%'
-      }
-    }),
-  );
-  
-  const classes = useStyles();
+  const useStyles = makeStyles()((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    title: {
+      flexGrow: 1,
+    },
+    section: {
+        color: showNav ? 'white' : navbarColor,
+        cursor: 'pointer',
+        marginRight: 10,
+        marginLeft: 10,
+        display: 'table-cell',
+      verticalAlign: 'middle',
+        '&:hover': {
+          color: hoverColor,
+          textDecoration: 'none'
+        },
+    },
+    typo: {
+      fontWeight: 500
+    },
+    toolbar: {
+      height: '100%'
+    }
+  }));
+  const { classes } = useStyles();
+
   
     React.useEffect(() => {
       document.addEventListener("scroll", handleScroll);

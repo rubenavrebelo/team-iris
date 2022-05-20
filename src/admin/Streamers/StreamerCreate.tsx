@@ -16,8 +16,7 @@ export const StreamerCreate = (props: any) => (
                     { id: 'they', name: 'They/Them' },
                     { id: 'it', name: 'It/Its' },
                 ]} />
-                <TextInput source="videourl" validation={{ required: true }} />
-                <RichTextInput source="description" validation={{ required: true }} />
+                <TextInput source="videourl" />
             </SimpleForm>
         </Create>
     );

@@ -10,7 +10,7 @@ export default {
   component: StreamerDetails,
 } as Meta;
 
-const Template: Story<StreamerDetailsProps> = (args) => <StreamerDetails {...args} />;
+const Template: Story<StreamerDetailsProps> = (args: any) => <StreamerDetails {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

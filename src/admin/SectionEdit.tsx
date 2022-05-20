@@ -7,8 +7,7 @@ const SectionEdit = ({ permissions, ...props }: any) => (
 
     <Edit {...props}>
         <TextInput disabled label="Id" source="id" />
-        <TextInput source="title" validation={{ required: true }} />
-        <RichTextInput source="body" validation={{ required: true }} />
+        <TextInput source="title"  />
     </Edit>
 );
 

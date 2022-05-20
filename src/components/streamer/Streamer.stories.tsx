@@ -14,7 +14,7 @@ const setStreamerInfo = (streamer: StreamerObject) => {
   console.log(streamer);
 }
 
-const Template: Story<StreamerProps> = (args) => <Streamer streamer={Eevo} setStreamerInfo={setStreamerInfo} />;
+const Template: Story<StreamerProps> = (args: any) => <Streamer streamer={Eevo} setStreamerInfo={setStreamerInfo} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

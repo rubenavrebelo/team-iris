@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<GenderBitsProps> = (args) => <GenderBits {...args} />;
+const Template: Story<GenderBitsProps> = (args: any) => <GenderBits {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import * as React from 'react';
 import { StreamerObject } from '../../types/types';
 import Streamer from '../streamer/Streamer';
@@ -18,8 +18,9 @@ export default function StreamerGrid(props: StreamerGridProps) {
     }
 
     return (
-        <Grid id={'streamers-grid'} container spacing={3} justify={'space-evenly'} style={{width: '90%', margin: '0 auto'}}>
+        <Grid container spacing={3} style={{width: '90%', margin: '0 auto', justifyContent: 'space-evenly'}}>
             {generateGrid()}
         </Grid>
+        
     );
 }
