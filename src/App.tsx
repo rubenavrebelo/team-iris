@@ -3,7 +3,8 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import PageDemo from './components/demo/PageDemo';
 import AdminPanel from './admin/Admin';
@@ -13,7 +14,8 @@ function App() {
     <Router>
     <Routes>
       <Route path={'/'} element={<PageDemo/>}/>
-      <Route path={'/admin'} element={<AdminPanel />}/>
+      <Route path={'/admin/*'} element={<AdminPanel />}/>
+      <Route path={'/login'} element={<Navigate replace to={'/admin/login'}/>}/>
     </Routes>
     </Router>
   );

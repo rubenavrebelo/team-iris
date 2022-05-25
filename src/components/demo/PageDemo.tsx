@@ -1,5 +1,5 @@
 import * as React from 'react';
-import StreamerSection from '../../sections/streamers/StreamersSection';
+import {StreamerSection} from '../../sections/streamers/StreamersSection';
 import TextSection from '../../sections/text-section/TextSection';
 import Navbar from '../navbar/Navbar';
 import grey from '@mui/material/colors/grey';

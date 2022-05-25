@@ -70,15 +70,15 @@ export default function Navbar(props: NavbarProps) {
 
     return (
     <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
-    elevation={showNav? 2 : 0}>
+    elevation={0}>
         <Toolbar className={classes.toolbar}>
             <img src={logo} style={{height: '9vh'}} alt={'logo'}/>
             <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
             <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
-              <Typography className={classes.typo}>Section 1</Typography>
+              <Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 1</Typography>
               </Link>
-            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo}>Section 2</Typography></Link>
-            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo}>Section 3</Typography></Link>
+            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 2</Typography></Link>
+            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 3</Typography></Link>
             </div>
         </Toolbar>
     </AppBar>
