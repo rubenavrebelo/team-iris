@@ -12,14 +12,15 @@ export interface GenderBitsProps {
 const useStyles = makeStyles()((theme) => ({
     genderText: {
         color: 'white',
-        fontSize: '0.7vw'
+        fontSize: '0.7vw',
+        userSelect: 'none'
     }
   }));
 
 export default function GenderBits(props: GenderBitsProps) {
     const { classes } = useStyles();
 
-    return (<div className={'gender-bit'}>
+    return (<div className={'gender-bit gender-background'}>
         <Typography className={classes.genderText}>
             {Pronouns[props.pronoun]}
         </Typography>

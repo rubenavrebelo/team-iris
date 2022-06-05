@@ -16,7 +16,7 @@
   left: -5px;
   right: -5px;
   bottom: -5px;
-  background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  background: linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6);
   z-index: -1;
 }
 .GradientBorder::before {
@@ -26,7 +26,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  background: linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6);
   z-index: -2;
   filter: blur(40px);
 }

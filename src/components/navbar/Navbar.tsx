@@ -69,10 +69,10 @@ export default function Navbar(props: NavbarProps) {
     }
 
     return (
-    <AppBar position={'sticky'} style={{height: '10vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
+    <AppBar position={'sticky'} style={{height: '8vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
     elevation={0}>
         <Toolbar className={classes.toolbar}>
-            <img src={logo} style={{height: '9vh'}} alt={'logo'}/>
+            <img src={logo} style={{height: '7vh'}} alt={'logo'}/>
             <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
             <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
               <Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 1</Typography>

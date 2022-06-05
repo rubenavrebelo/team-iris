@@ -6,14 +6,15 @@ import logo from '../../media/logo_draft.png';
 import iris from '../../media/iris.mp4';
 import axios from 'axios';
 import { makeStyles } from 'tss-react/mui';
-import { Typography } from '@mui/material';
+import { Fade, Typography } from '@mui/material';
+import { keyframes } from "tss-react";
 
 const useStyles = makeStyles()((theme) => ({
     videoOverlay: {
         backgroundColor: 'rgba(0,0,0, 0.7)',
         zIndex: 30,
         width: '100%',
-        height: '80.5%',
+        height: '73.5%',
         position:'absolute',
         top: 0,
         display: 'flex',
@@ -30,7 +31,19 @@ const useStyles = makeStyles()((theme) => ({
     subText: {
         color: 'white',
         fontSize: 26,
+        marginTop: 30,
         fontWeight: 500,
+    },
+    hidden: {
+            "opacity": 0,
+            "animation": `${keyframes`
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+            `} 1.5s ease-in-out`
     }
 }));
 
@@ -55,7 +68,7 @@ export const StreamerSection: React.FC = () =>  {
     React.useEffect(() => {
         const timeout = setTimeout(() => {
             setShowVideo(true)
-        }, 500);
+        }, 1800);
         return () => clearTimeout(timeout);
     }, [])
   
@@ -90,17 +103,23 @@ export const StreamerSection: React.FC = () =>  {
             {streamerInfo != null ? 
             <StreamerDetails position={streamers.indexOf(streamerInfo)} setStreamer={setStreamerById} streamer={streamerInfo}
                 handleNext={handleNext} handlePrevious={handlePrevious} maxStreamers={streamers.length}/> : 
-                <div style={{minHeight: '60vh', textAlign: 'center'}}>
-                    {!showVideo ? <img src={logo} alt={'phenomena'}/> : 
+                <div style={{minHeight: '100vh', textAlign: 'center'}}>
+                    {!showVideo ? <div style={{height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={classes.hidden}>
+                        <img src={logo} alt={'phenomena'}/>
+                        </div> : 
                     <div>
                         <video src={iris} controls={false} autoPlay muted loop style={{width: '100%'}}/>
                         <div className={classes.videoOverlay}>
-                            <Typography className={classes.text}>Eevo's bussy.</Typography>
-                            <Typography className={classes.subText}>A maior, a mais grossa, a mais gostosa bussy</Typography>
+                            <Typography className={classes.text}>Team Iris</Typography>
+                            <Typography className={classes.subText}>Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no  @Twitch. 
+                            Orgulhoses das nossas individualidades. 🌈</Typography>
                         </div>
                     </div>}
                 </div>}
-            {streamers != null && <StreamerGrid streamers={streamers} setStreamerInfo={setStreamer}/>}
+            {streamers != null && 
+            <div style={{marginTop: 50, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <Typography variant={'h3'} style={{marginBottom: 20}}>Meet our team</Typography>
+                <StreamerGrid streamers={streamers} setStreamerInfo={setStreamer}/></div>}
         </div>
     );
 }

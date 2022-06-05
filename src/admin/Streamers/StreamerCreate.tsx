@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {SimpleForm, TextInput, Create, ImageInput, CheckboxGroupInput, ImageField} from 'react-admin';
-import RichTextInput from 'ra-input-rich-text';
+import { RichTextInput } from 'ra-input-rich-text';
 
 export const StreamerCreate = (props: any) => (
         <Create {...props}>
@@ -16,6 +16,7 @@ export const StreamerCreate = (props: any) => (
                     { id: 'they', name: 'They/Them' },
                     { id: 'it', name: 'It/Its' },
                 ]} />
+                <RichTextInput source={'description'} />
                 <TextInput source="videourl" />
             </SimpleForm>
         </Create>

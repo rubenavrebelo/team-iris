@@ -1,4 +1,4 @@
-import { Avatar, ButtonBase, Card, CardContent, Grid, responsiveFontSizes, ThemeProvider, Typography } from '@mui/material';
+import { Avatar, ButtonBase, Card, CardContent, Grid, IconButton, responsiveFontSizes, ThemeProvider, Typography } from '@mui/material';
 import { createTheme } from '@mui/material/styles'
 import * as React from 'react';
 import { StreamerObject } from '../../types/types';
@@ -7,6 +7,7 @@ import './StreamerDetails.scss';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import parse from "html-react-parser";
+import CloseIcon from '@mui/icons-material/Close';
 
 export interface StreamerDetailsProps {
     streamer: StreamerObject
@@ -38,6 +39,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
 
     return (
         <div style={{width: '95%', margin: '0 auto', marginBottom: 20}} id={'streamers-details'}>
+            
         <Grid container spacing={2}>
             <Grid item xs={1} style={{display: 'flex', alignItems: 'center'}}>
                 {props.position !== 0 && <ButtonBase style={{margin: '0 auto'}} onClick={(e) => handlePrevious(e)}>
@@ -53,7 +55,10 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 </div>
             </Grid>
             <Grid item xs={3}>
-                <Card style={{width: '23vw', height: '60vh',  display: 'inline-block', textAlign: 'unset'}}>
+                <Card style={{width: '23vw', height: '60vh',  display: 'inline-block', textAlign: 'unset', position: 'relative'}}>
+                <IconButton style={{position: 'absolute', right: 10, top: 10}}>
+                    <CloseIcon />
+                </IconButton>
                 <CardContent>
                 <ThemeProvider theme={theme}>
                     <Typography gutterBottom variant="h4" style={{fontSize: '2.55vw'}}>{streamer.username}</Typography>
