@@ -16,7 +16,9 @@ export default function Avatar(props: AvatarProps) {
         setHover(false);
     }
 
+    //     <img src={!hover ? props.streamer.avatar : 'https://i.imgur.com/hhlkqDf.gif'} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'} 
+
     return (
-    <img src={!hover ? props.streamer.avatar : 'https://i.imgur.com/hhlkqDf.gif'} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'} 
+    <img src={props.streamer.avatar} alt={'Eevolicious'} 
     style={{width: '100%'}}/>);
 }

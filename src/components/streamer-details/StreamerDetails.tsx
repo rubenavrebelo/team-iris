@@ -1,13 +1,16 @@
-import { Avatar, ButtonBase, Card, CardContent, Grid, IconButton, responsiveFontSizes, ThemeProvider, Typography } from '@mui/material';
-import { createTheme } from '@mui/material/styles'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CloseIcon from '@mui/icons-material/Close';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import { Avatar, ButtonBase, Card, CardContent, Grid, IconButton, responsiveFontSizes, Typography } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import parse from "html-react-parser";
 import * as React from 'react';
+import { ReactComponent as TwitchLogo } from '../../media/twitch.svg';
 import { StreamerObject } from '../../types/types';
 import GenderBits from '../gender-bits/GenderBits';
 import './StreamerDetails.scss';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import parse from "html-react-parser";
-import CloseIcon from '@mui/icons-material/Close';
+
 
 export interface StreamerDetailsProps {
     streamer: StreamerObject
@@ -16,6 +19,7 @@ export interface StreamerDetailsProps {
     handleNext: () => void;
     maxStreamers: number;
     position: number;
+    resetStreamer: () => void;
 }
 
 let theme = createTheme();
@@ -38,8 +42,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
     const {streamer, maxStreamers} = props;
 
     return (
-        <div style={{width: '95%', margin: '0 auto', marginBottom: 20}} id={'streamers-details'}>
-            
+        <div style={{width: '100%', margin: '0 auto', padding: "35px 0px"}} id={'streamers-details'} className={"details-background"}>
         <Grid container spacing={2}>
             <Grid item xs={1} style={{display: 'flex', alignItems: 'center'}}>
                 {props.position !== 0 && <ButtonBase style={{margin: '0 auto'}} onClick={(e) => handlePrevious(e)}>
@@ -55,18 +58,21 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 </div>
             </Grid>
             <Grid item xs={3}>
-                <Card style={{width: '23vw', height: '60vh',  display: 'inline-block', textAlign: 'unset', position: 'relative'}}>
-                <IconButton style={{position: 'absolute', right: 10, top: 10}}>
+                <Card style={{width: '23vw', height: '64vh',  display: 'inline-block', textAlign: 'unset', position: 'relative'}}>
+                <IconButton style={{position: 'absolute', right: 10, top: 10}} onClick={() => props.resetStreamer() }>
                     <CloseIcon />
                 </IconButton>
                 <CardContent>
-                <ThemeProvider theme={theme}>
+                    <div>
                     <Typography gutterBottom variant="h4" style={{fontSize: '2.55vw'}}>{streamer.username}</Typography>
                     <div>
                         {genGenderBits()}
                     </div>
-                    <Typography variant={'body2'} style={{fontSize: '1.2vw'}} >{parse(streamer.description)}</Typography>
-                </ThemeProvider>
+                    <Typography variant={'body2'} style={{fontSize: '1.2rem'}} >{parse(streamer.description)}</Typography>
+                    </div>
+                    
+                <TwitterIcon style={{color: '#1DA1F2'}}/>
+                <TwitchLogo style={{color: 'white'}}/>
                 </CardContent>
                 </Card>
             </Grid>

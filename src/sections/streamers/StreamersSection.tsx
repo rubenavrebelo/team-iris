@@ -1,20 +1,20 @@
+import { Typography } from '@mui/material';
+import axios from 'axios';
 import * as React from 'react';
+import { keyframes } from "tss-react";
+import { makeStyles } from 'tss-react/mui';
 import StreamerDetails from '../../components/streamer-details/StreamerDetails';
 import StreamerGrid from '../../components/streamer-grid/StreamerGrid';
-import { StreamerObject } from '../../types/types';
-import logo from '../../media/logo_draft.png';
 import iris from '../../media/iris.mp4';
-import axios from 'axios';
-import { makeStyles } from 'tss-react/mui';
-import { Fade, Typography } from '@mui/material';
-import { keyframes } from "tss-react";
+import logo from '../../media/logo_draft.png';
+import { StreamerObject } from '../../types/types';
 
 const useStyles = makeStyles()((theme) => ({
     videoOverlay: {
         backgroundColor: 'rgba(0,0,0, 0.7)',
         zIndex: 30,
         width: '100%',
-        height: '73.5%',
+        height: '110.5vh',
         position:'absolute',
         top: 0,
         display: 'flex',
@@ -93,6 +93,10 @@ export const StreamerSection: React.FC = () =>  {
             }
         }
     }
+    
+    const removeStreamerInfo = () => {
+        setStreamerInfo(null);
+    }
 
     const setStreamerById = (id: number) => {
         if(streamers !== null) setStreamerInfo(streamers.filter((e) => e.id === id)[0]);
@@ -101,10 +105,12 @@ export const StreamerSection: React.FC = () =>  {
     return (
         <div id='streamers' style={{minHeight: '100vh', position: 'relative', zIndex: 10}}>
             {streamerInfo != null ? 
-            <StreamerDetails position={streamers.indexOf(streamerInfo)} setStreamer={setStreamerById} streamer={streamerInfo}
-                handleNext={handleNext} handlePrevious={handlePrevious} maxStreamers={streamers.length}/> : 
+            <div style={{marginTop: 90}}>
+                <StreamerDetails position={streamers.indexOf(streamerInfo)} setStreamer={setStreamerById} streamer={streamerInfo}
+                handleNext={handleNext} handlePrevious={handlePrevious} maxStreamers={streamers.length} resetStreamer={removeStreamerInfo}/>
+                </div> : 
                 <div style={{minHeight: '100vh', textAlign: 'center'}}>
-                    {!showVideo ? <div style={{height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={classes.hidden}>
+                    {!showVideo ? <div style={{height: '110vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={classes.hidden}>
                         <img src={logo} alt={'phenomena'}/>
                         </div> : 
                     <div>

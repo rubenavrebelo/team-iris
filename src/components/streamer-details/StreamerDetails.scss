@@ -10,3 +10,28 @@
     top: 0;
     left: 0;
   }
+
+  .details-background {
+    background: linear-gradient(210deg, #082399, #4292cc, #ec6acc, #e808b6);
+    background-size: 800% 800%;
+
+    -webkit-animation: BitsAnimation 18s ease infinite;
+    -moz-animation: BitsAnimation 18s ease infinite;
+    animation: BitsAnimation 18s ease infinite;
+}
+
+@-webkit-keyframes BitsAnimation {
+    0%{background-position:66% 0%}
+    50%{background-position:35% 100%}
+    100%{background-position:66% 0%}
+}
+@-moz-keyframes BitsAnimation {
+    0%{background-position:66% 0%}
+    50%{background-position:35% 100%}
+    100%{background-position:66% 0%}
+}
+@keyframes BitsAnimation {
+    0%{background-position:66% 0%}
+    50%{background-position:35% 100%}
+    100%{background-position:66% 0%}
+}

@@ -1,8 +1,8 @@
-import { Typography, Theme } from '@mui/material';
+import { Typography } from '@mui/material';
 import * as React from 'react';
+import { makeStyles } from 'tss-react/mui';
 import { Pronouns } from '../../types/types';
 import './GenderBits.scss';
-import { makeStyles } from 'tss-react/mui';
 
 
 export interface GenderBitsProps {

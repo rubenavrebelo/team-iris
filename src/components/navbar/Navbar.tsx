@@ -1,11 +1,11 @@
-import { AppBar, createStyles, Theme, Toolbar, Typography } from '@mui/material';
-import * as React from 'react';
-import './Navbar.scss';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import grey from '@mui/material/colors/grey';
 import pink from '@mui/material/colors/pink';
+import * as React from 'react';
 import { Link } from "react-scroll";
-import logo from '../../media/logo_draft.png';
 import { makeStyles } from 'tss-react/mui';
+import logo from '../../media/logo_draft.png';
+import './Navbar.scss';
 
 const navbarColor = grey[900];
 const hoverColor = pink[200];
@@ -38,7 +38,8 @@ export default function Navbar(props: NavbarProps) {
         },
     },
     typo: {
-      fontWeight: 500
+      fontWeight: 500,
+      fontSpacing: 0.6
     },
     toolbar: {
       height: '100%'
@@ -57,7 +58,7 @@ export default function Navbar(props: NavbarProps) {
     const handleScroll = () => {
       const scrolled = document.scrollingElement?.scrollTop
       if(scrolled) {
-        if(scrolled >= 70) {
+        if(scrolled >= 100) {
           setShowNav(true)
         }
         else setShowNav(false)
@@ -69,16 +70,16 @@ export default function Navbar(props: NavbarProps) {
     }
 
     return (
-    <AppBar position={'sticky'} style={{height: '8vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
+    <AppBar position={'fixed'} style={{height: '8vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
     elevation={0}>
         <Toolbar className={classes.toolbar}>
             <img src={logo} style={{height: '7vh'}} alt={'logo'}/>
             <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
             <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
-              <Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 1</Typography>
+              <Typography className={classes.typo} style={{color: 'white'}}>Section 1</Typography>
               </Link>
-            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 2</Typography></Link>
-            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo} style={{color: showNav ? 'white' : 'black'}}>Section 3</Typography></Link>
+            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo} style={{color: 'white' }}>Section 2</Typography></Link>
+            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo} style={{color: 'white' }}>Section 3</Typography></Link>
             </div>
         </Toolbar>
     </AppBar>

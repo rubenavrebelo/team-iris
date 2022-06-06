@@ -63,8 +63,8 @@ app.post('/streamers', async (req, res)=> {
     const image = avatar.src;
     const path = writeImageAvatar(image, avatar.title);
     var queryConfig = {
-        text: 'INSERT into public.streamers (username, url, description, avatar, pronouns, videourl) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-        values: [username, url, description, "http://localhost:8080/"+path, pronouns, videourl]
+        text: 'INSERT into public.streamers (username, url, description, avatar, avatargif, pronouns, videourl) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
+        values: [username, url, description, "http://localhost:8080/"+path, "http://localhost:8080/avatars/eevo_pose.gif", pronouns, videourl]
     };
     
     const results = await db.query(queryConfig);

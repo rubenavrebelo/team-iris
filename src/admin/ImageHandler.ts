@@ -37,7 +37,6 @@ const dataProvider = jsonServerProvider("http://localhost:8080");
             );
     },
     create: (resource: any, params: any) => {
-        console.log(params.data);
         if (resource !== 'streamers' || !params.data.avatar) {
             return dataProvider.create(resource, params);
         }
