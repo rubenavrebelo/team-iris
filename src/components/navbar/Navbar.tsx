@@ -5,6 +5,7 @@ import * as React from 'react';
 import { Link } from "react-scroll";
 import { makeStyles } from 'tss-react/mui';
 import logo from '../../media/logo_draft.png';
+import { SectionObject } from '../../types/types';
 import './Navbar.scss';
 
 const navbarColor = grey[900];
@@ -13,6 +14,7 @@ const hoverColor = pink[200];
 export interface NavbarProps {
   section?: string;
   setCurrentSection: (section: string) => void;
+  sections: SectionObject[];
 }
 
 
@@ -75,11 +77,9 @@ export default function Navbar(props: NavbarProps) {
         <Toolbar className={classes.toolbar}>
             <img src={logo} style={{height: '7vh'}} alt={'logo'}/>
             <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
-            <Link className={classes.section} to={'streamers-grid'} offset={-100} smooth={true} onClick={handleClick}>
-              <Typography className={classes.typo} style={{color: 'white'}}>Section 1</Typography>
-              </Link>
-            <Link className={classes.section} to={'test-section'} smooth={true} offset={-100}><Typography className={classes.typo} style={{color: 'white' }}>Section 2</Typography></Link>
-            <Link className={classes.section} to={'streamers-details'}><Typography className={classes.typo} style={{color: 'white' }}>Section 3</Typography></Link>
+            {props.sections.map((sec) => <Link className={classes.section} to={`${sec.title.replace(/\s/g, '-').toLowerCase()}-section`} offset={-100} smooth={true} onClick={handleClick}>
+              <Typography className={classes.typo} style={{color: 'white'}}>{sec.title}</Typography>
+              </Link> )}
             </div>
         </Toolbar>
     </AppBar>

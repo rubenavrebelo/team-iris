@@ -38,5 +38,6 @@ export const Eevo : StreamerObject = {
 export interface SectionObject {
     id: number;
     title: string;
-    body: string; 
+    text: string;
+    position: 'right' | 'center' | 'left';
 }

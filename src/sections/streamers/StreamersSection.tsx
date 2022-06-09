@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import axios from 'axios';
 import * as React from 'react';
 import { keyframes } from "tss-react";
@@ -8,6 +8,7 @@ import StreamerGrid from '../../components/streamer-grid/StreamerGrid';
 import iris from '../../media/iris.mp4';
 import logo from '../../media/logo_draft.png';
 import { StreamerObject } from '../../types/types';
+import logoMain from '../../media/logo_main.png';
 
 const useStyles = makeStyles()((theme) => ({
     videoOverlay: {
@@ -116,9 +117,10 @@ export const StreamerSection: React.FC = () =>  {
                     <div>
                         <video src={iris} controls={false} autoPlay muted loop style={{width: '100%'}}/>
                         <div className={classes.videoOverlay}>
-                            <Typography className={classes.text}>Team Iris</Typography>
-                            <Typography className={classes.subText}>Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no  @Twitch. 
-                            Orgulhoses das nossas individualidades. 🌈</Typography>
+                            <img src={logoMain} style={{width: '50%'}}/>
+
+                            <Typography className={classes.subText}>Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no <Link href={'http://www.twitch.tv/team/iris'}>@Twitch</Link>. 
+                            <br/>Orgulhoses das nossas individualidades.</Typography>
                         </div>
                     </div>}
                 </div>}

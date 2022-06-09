@@ -25,8 +25,9 @@ const validateUserCreation = (values: any) => {
     if(!values.url.match(regex)) {
         errors.url = "Must be an URL"
     }
-    if(!values.url.includes("http://www.twitch.tv/") || !values.url.includes("www.twitch.tv/")) {
-        errors.url = "URL has to be a Twitch URL";
+    console.log(!values.url.includes("http://www.twitch.tv/"), !values.url.includes("www.twitch.tv/"))
+    if(!values.url.includes("http://www.twitch.tv/") && !values.url.includes("www.twitch.tv/")) {
+        errors.url = "URL has to be a Twitch URL (must have at least www)";
     }
     return errors
 };

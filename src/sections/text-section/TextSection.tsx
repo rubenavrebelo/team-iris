@@ -1,22 +1,23 @@
 import { Typography } from '@mui/material';
+import parse from "html-react-parser";
 import * as React from 'react';
-import { LoremIpsum } from 'react-lorem-ipsum';
 import './TextSection.scss';
 
 export interface TextSectionProps {
-    sectionTitle: string;
-    alignment?: 'right' | 'left' | 'center';
+    title: string;
+    position?: 'right' | 'left' | 'center';
+    text: string;
 }
 
 export default function TextSection(props: TextSectionProps) {
-    const {alignment} = props;
+    const {position, text} = props;
+
+    console.log(position);
     return (
-        <div id={`${props.sectionTitle.replace(/\s/g, '-').toLowerCase()}-section`} style={{marginTop: 70, textAlign: alignment ? alignment: 'left'}}>
+        <div id={`${props.title.replace(/\s/g, '-').toLowerCase()}-section`} style={{marginTop: 70, textAlign: position ? position: 'left'}}>
             <div className={'innerSection'}>
-                <Typography variant={'caption'}>This line is just for demo purposes.</Typography>
-                <div style={{width: '100%', height: 2, backgroundColor: 'black'}}/>
-                <Typography variant={'h2'}>{props.sectionTitle}</Typography>
-                <Typography><LoremIpsum p={2}/></Typography>
+                <Typography variant={'h2'}>{props.title}</Typography>
+                <Typography style={{paddingLeft: 10}}>{parse(text)}</Typography>
             </div>
         </div>
     );

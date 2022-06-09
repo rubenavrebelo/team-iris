@@ -51,6 +51,7 @@ app.get('/streamers', async (req, res)=> {
     res.send(results.rows);
 })
 
+
 app.get('/streamers/:id', async (req, res)=> {
     const results = await db.query(`SELECT * FROM public.streamers WHERE id=${req.params.id}`);
     res.header('Access-Control-Expose-Headers', 'X-Total-Count');
@@ -110,6 +111,25 @@ const users = [
         password: 'eevoTest',
     }, 
 ];
+
+app.get('/sections', async (req, res)=> {
+    const results = await db.query("SELECT * FROM public.sections ORDER BY id");
+    res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+    res.set('X-Total-Count', results.rows.length);
+    res.send(results.rows);
+})
+
+app.post('/sections', async (req, res)=> {
+    const {title, text, position} = req.body;
+    var queryConfig = {
+        text: 'INSERT into public.sections (title, text, position) VALUES ($1, $2, $3) RETURNING id',
+        values: [title, text, position]
+    };
+    
+    const results = await db.query(queryConfig);
+    res.send(results.rows[0]);
+})
+
 
 app.post('/login', (req, res, next) => {
     const { username, password } = req.body;

@@ -13,5 +13,5 @@ const Template: Story<TextSectionProps> = (args: any) => <TextSection {...args} 
 
 export const Primary = Template.bind({});
 Primary.args = {
-  sectionTitle: 'Components'
+  title: 'Components'
 };

@@ -18,7 +18,7 @@ export default function StreamerGrid(props: StreamerGridProps) {
     }
 
     return (
-        <Grid container spacing={3} style={{width: '90%', margin: '0 auto', justifyContent: 'space-evenly'}}>
+        <Grid container spacing={3} style={{width: '90%', margin: '0 auto', justifyContent: 'space-between'}}>
             {generateGrid()}
         </Grid>
         
