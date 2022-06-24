@@ -16,7 +16,7 @@ export default function TextSection(props: TextSectionProps) {
     return (
         <div id={`${props.title.replace(/\s/g, '-').toLowerCase()}-section`} style={{marginTop: 70, textAlign: position ? position: 'left'}}>
             <div className={'innerSection'}>
-                <Typography variant={'h2'}>{props.title}</Typography>
+                <Typography variant={'h2'} style={{fontFamily: 'Sugo', letterSpacing: 0}}>{props.title}</Typography>
                 <Typography style={{paddingLeft: 10}}>{parse(text)}</Typography>
             </div>
         </div>

@@ -1,6 +1,6 @@
+import { RichTextInput } from 'ra-input-rich-text';
 import * as React from 'react';
-import { Edit, SimpleForm, TextInput, Create, CheckboxGroupInput} from 'react-admin';
-import {RichTextInput} from 'ra-input-rich-text';
+import { Edit, RadioButtonGroupInput, SimpleForm, TextInput } from 'react-admin';
 
 
 export const SectionEdit = ({ permissions, ...props }: any) => (
@@ -10,9 +10,9 @@ export const SectionEdit = ({ permissions, ...props }: any) => (
             <TextInput disabled label="Id" source="id" />
             <TextInput source="title"  />
             <RichTextInput source={'text'} />
-            <CheckboxGroupInput label="Position" source="position" choices={[
+            <RadioButtonGroupInput label="Position" source="position" choices={[
                     { id: 'right', name: 'Right' },
-                    { id: 'middle', name: 'Middle' },
+                    { id: 'center', name: 'Center' },
                     { id: 'left', name: 'Left' },
                 ]} />
         </SimpleForm>

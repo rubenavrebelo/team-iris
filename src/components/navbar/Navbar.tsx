@@ -15,6 +15,9 @@ export interface NavbarProps {
   section?: string;
   setCurrentSection: (section: string) => void;
   sections: SectionObject[];
+  detailsOpen: boolean;
+  handleFontColor: (val: boolean) => void;
+  navbarFontColor: boolean;
 }
 
 
@@ -62,8 +65,16 @@ export default function Navbar(props: NavbarProps) {
       if(scrolled) {
         if(scrolled >= 100) {
           setShowNav(true)
+          if(props.detailsOpen) {
+            props.handleFontColor(false);
+          }
         }
-        else setShowNav(false)
+        else { 
+          if(props.detailsOpen) {
+            props.handleFontColor(true);
+          }
+          setShowNav(false);
+        }
       }
     }
 
@@ -78,7 +89,7 @@ export default function Navbar(props: NavbarProps) {
             <img src={logo} style={{height: '7vh'}} alt={'logo'}/>
             <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
             {props.sections.map((sec) => <Link className={classes.section} to={`${sec.title.replace(/\s/g, '-').toLowerCase()}-section`} offset={-100} smooth={true} onClick={handleClick}>
-              <Typography className={classes.typo} style={{color: 'white'}}>{sec.title}</Typography>
+              <Typography className={classes.typo} style={{color: props.navbarFontColor ? navbarColor: 'white'}}>{sec.title}</Typography>
               </Link> )}
             </div>
         </Toolbar>

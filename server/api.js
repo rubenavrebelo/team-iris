@@ -44,6 +44,21 @@ const updateProductByID = (id, cols) => {
     return query.join(' ');
   }
 
+  const updateSectionsByID = (id, cols) => {
+    var query = ['UPDATE public.sections'];
+    query.push('SET');
+  
+    var set = [];
+    Object.keys(cols).forEach(function (key, i) {
+      set.push(key + ' = ($' + (i + 1) + ')'); 
+    });
+    query.push(set.join(', '));
+  
+    query.push('WHERE id = ' + id + ' RETURNING *');
+  
+    return query.join(' ');
+  }
+
 app.get('/streamers', async (req, res)=> {
     const results = await db.query("SELECT * FROM public.streamers ORDER BY id");
     res.header('Access-Control-Expose-Headers', 'X-Total-Count');
@@ -119,6 +134,13 @@ app.get('/sections', async (req, res)=> {
     res.send(results.rows);
 })
 
+app.get('/sections/:id', async (req, res)=> {
+    const results = await db.query(`SELECT * FROM public.sections WHERE id=${req.params.id}`);
+    res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+    res.set('X-Total-Count', results.rows.length);
+    res.send(results.rows[0]);
+})
+
 app.post('/sections', async (req, res)=> {
     const {title, text, position} = req.body;
     var queryConfig = {
@@ -127,6 +149,30 @@ app.post('/sections', async (req, res)=> {
     };
     
     const results = await db.query(queryConfig);
+    res.send(results.rows[0]);
+})
+
+app.delete('/sections/:id', async (req, res)=> {
+    const results = await db.query(`DELETE FROM public.sections WHERE id=${req.params.id}`)
+    res.send({});
+})
+
+app.put('/sections/:id', async (req, res)=> {
+    const {id, title, text} = req.body;
+    const body = req.body;
+    delete body.id;
+    
+
+    const values = Object.keys(body).map(function (key) {
+        return req.body[key];
+      });
+    
+    const queryConfig = {
+        text: updateSectionsByID(id, body),
+        values
+    }
+
+    const results = await db.query(queryConfig)
     res.send(results.rows[0]);
 })
 

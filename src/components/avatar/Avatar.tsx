@@ -2,21 +2,32 @@ import * as React from 'react';
 import { StreamerObject } from '../../types/types';
 
 export interface AvatarProps {
-    streamer: StreamerObject;
+  streamer: StreamerObject;
 }
 
 export default function Avatar(props: AvatarProps) {
-    const [hover, setHover] = React.useState<boolean>();
+  const [hover, setHover] = React.useState<boolean>();
 
-    const gifPlay = () => {
-        setHover(true);
-    }
+  const gifPlay = () => {
+    setHover(true);
+  };
 
-    const gifStop = () => {
-        setHover(false);
-    }
+  const gifStop = () => {
+    setHover(false);
+  };
 
-    //     <img src={!hover ? props.streamer.avatar : 'https://i.imgur.com/hhlkqDf.gif'} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'} 
+  //     <img src={!hover ? props.streamer.avatar : 'https://i.imgur.com/hhlkqDf.gif'} onMouseEnter={gifPlay} onMouseLeave={gifStop} alt={'Eevolicious'}
 
-    return (<img src={props.streamer.avatar} alt={'Eevolicious'} style={{width: '100%', height: '100%'}}/>);
+  return (
+    <img
+      src={props.streamer.avatar}
+      alt={'Eevolicious'}
+      style={{
+        width: '100%',
+        height: '100%',
+        borderBottomLeftRadius: 20,
+        borderTopRightRadius: 20,
+      }}
+    />
+  );
 }

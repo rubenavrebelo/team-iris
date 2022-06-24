@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, EditButton, UrlField, ImageField, DeleteButton, ChipField, SingleFieldList, ArrayField } from 'react-admin';
+import { List, Datagrid, TextField, EditButton, UrlField, ImageField, DeleteButton, ChipField, SingleFieldList, ArrayField, RichTextField } from 'react-admin';
 import { makeStyles } from "tss-react/mui";
 
 export const StringToLabelObject = ({ record, children, ...rest }: any) =>
@@ -34,7 +34,7 @@ export const StreamerList = (props: any) => {
                 </SingleFieldList>
             </ArrayField>
             <UrlField source="videourl" />
-            <TextField source="description" />
+            <RichTextField source="description" />
             <EditButton/>
             <DeleteButton/>
         </Datagrid>

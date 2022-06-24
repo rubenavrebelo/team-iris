@@ -15,6 +15,8 @@ export default function PageDemo() {
 
     const [currentSection, setSection] = React.useState<string>('');
     const [sections, setSections] = React.useState<SectionObject[]>([]);
+    const [inStreamerDetails, setInStreamerDetails] = React.useState<boolean>(false);
+    const [navbarFontColor, setNavbarFontColor] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         const fetchData = async () => {
@@ -31,15 +33,24 @@ export default function PageDemo() {
         setSection(section);
     }
 
+    const handleFontColor = (val: boolean) => {
+        setNavbarFontColor(val);
+    }
+
+    const handleDetails = (val: boolean) => {
+        setInStreamerDetails(val);
+    }
+
+    console.log("props", inStreamerDetails)
     return (
         <div id={'main'}>
-            <Navbar section={currentSection} setCurrentSection={setCurrentSection} sections={sections}/>
-            <StreamerSection />
+            <Navbar section={currentSection} setCurrentSection={setCurrentSection} sections={sections} detailsOpen={inStreamerDetails} handleFontColor={handleFontColor} navbarFontColor={navbarFontColor}/>
+            <StreamerSection handleFontColor={handleDetails} />
             {sections.map((sec) => <TextSection title={sec.title} text={sec.text} position={sec.position} />)}
             <footer className={'footer'} style={{backgroundColor: footbarColor}}>
                 <div className={'contacts'}>
                     <Typography style={{color: 'white'}} variant={'h6'}>Contacts</Typography>
-                    <Typography>team@phenomena.com</Typography>
+                    <Typography style={{color: 'white'}}>team@phenomena.com</Typography>
                 </div>
                 <div className={'socials'}>
                     <Typography style={{color: 'white'}} variant={'h6'}>Socials</Typography>

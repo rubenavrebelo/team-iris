@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Edit, SimpleForm, TextInput, ImageField, ImageInput, CheckboxGroupInput} from 'react-admin';
-import {RichTextInput} from 'ra-input-rich-text';
+import {RichTextInput, RichTextInputToolbar} from 'ra-input-rich-text';
 
 
 export const PreviewImage = ({ record, source }: any) => {
@@ -28,7 +28,7 @@ export const StreamerEdit = (props: any) => (
                     { id: 'it', name: 'It/Its' },
                 ]} />
                 <TextInput source="videourl"  />
-                <RichTextInput source={'description'} />
+                <RichTextInput source={'description'} toolbar={<RichTextInputToolbar size="large" />}/>
             </SimpleForm>
     </Edit>
 );
