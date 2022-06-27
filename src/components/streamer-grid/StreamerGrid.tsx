@@ -26,21 +26,33 @@ export default function StreamerGrid(props: StreamerGridProps) {
     const toRender = [];
     toRender.push(
       ...founders.map((streamer: StreamerObject) => (
-        <Grid item key={streamer.username + '-grid'} style={{ marginTop: 60 }}>
+        <Grid
+          item
+          key={streamer.username + '-grid'}
+          style={{ marginTop: 60, zIndex: 50 }}
+        >
           <Streamer streamer={streamer} setStreamerInfo={setStreamerInfo} />
         </Grid>
       ))
     );
     toRender.push(
       ...leaders.map((streamer: StreamerObject) => (
-        <Grid item key={streamer.username + '-grid'} style={{ marginTop: 60 }}>
+        <Grid
+          item
+          key={streamer.username + '-grid'}
+          style={{ marginTop: 60, zIndex: 50 }}
+        >
           <Streamer streamer={streamer} setStreamerInfo={setStreamerInfo} />
         </Grid>
       ))
     );
     toRender.push(
       ...streamers.map((streamer: StreamerObject) => (
-        <Grid item key={streamer.username + '-grid'} style={{ marginTop: 60 }}>
+        <Grid
+          item
+          key={streamer.username + '-grid'}
+          style={{ marginTop: 60, zIndex: 50 }}
+        >
           <Streamer streamer={streamer} setStreamerInfo={setStreamerInfo} />
         </Grid>
       ))
