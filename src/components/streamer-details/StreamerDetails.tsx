@@ -22,6 +22,8 @@ import GenderBits from '../gender-bits/GenderBits';
 import './StreamerDetails.scss';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { makeStyles } from 'tss-react/mui';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 const useStyles = makeStyles()((theme) => ({
   insta: {
@@ -47,6 +49,12 @@ theme = responsiveFontSizes(theme);
 
 export default function StreamerDetails(props: StreamerDetailsProps) {
   const { classes } = useStyles();
+  const twitchEmbed =
+    'https://player.twitch.tv/?channel=%streamername%&parent=www.example.com';
+
+  const [currentVideo, setCurrentVideo] = React.useState<'youtube' | 'twitch'>(
+    'youtube'
+  );
 
   const genGenderBits = () => {
     return props.streamer.pronouns.map((pronoun: string) => (
@@ -84,7 +92,39 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
           )}
         </Grid>
         <Grid item xs={7}>
-          <div className={'player-wrapper'}>
+          <div className={'player-wrapper'} style={{ position: 'relative' }}>
+            {!streamer.videourl.includes('player.twitch.tv') && (
+              <ButtonBase
+                onClick={() =>
+                  setCurrentVideo(
+                    currentVideo === 'youtube' ? 'twitch' : 'youtube'
+                  )
+                }
+                style={{
+                  zIndex: 1000,
+                  position: 'absolute',
+                  display: 'flex',
+                  bottom: 12,
+                  right: currentVideo === 'twitch' ? 177 : 150,
+                }}
+              >
+                {currentVideo === 'youtube' ? (
+                  <YouTubeIcon style={{ marginRight: 8, color: '#FF0000' }} />
+                ) : (
+                  <TwitchLogo
+                    style={{
+                      fill: 'pink',
+                      width: 24,
+                      height: 24,
+                      marginRight: 8,
+                    }}
+                  />
+                )}
+                <Typography style={{ color: 'white', fontWeight: 500 }}>
+                  Swap to {currentVideo === 'youtube' ? 'Channel' : 'Trailer'}
+                </Typography>
+              </ButtonBase>
+            )}
             <iframe
               style={{
                 position: 'absolute',
@@ -94,7 +134,15 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 height: '100%',
               }}
               title="video"
-              src={streamer.videourl}
+              src={
+                streamer.videourl.includes('player.twitch.tv')
+                  ? streamer.videourl.replace('www.example.com', 'localhost')
+                  : currentVideo === 'youtube'
+                  ? streamer.videourl
+                  : twitchEmbed
+                      .replace('www.example.com', 'localhost')
+                      .replace('%streamername%', streamer.username)
+              }
               frameBorder="0"
               allowFullScreen
             />
@@ -143,7 +191,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 </Typography>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <Link
-                    href={'http://twitter.com/'}
+                    href={`http://twitch.tv/${streamer.username}`}
                     underline={'none'}
                     style={{
                       display: 'flex',
@@ -160,64 +208,113 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                       }}
                     />
                   </Link>
-                  <Link
-                    href={'http://twitter.com/'}
-                    underline={'none'}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginRight: 16,
-                    }}
-                  >
-                    <TwitterIcon
+                  {streamer.twitter && (
+                    <Link
+                      href={streamer.twitter}
+                      underline={'none'}
                       style={{
-                        color: '#1DA1F2',
-                        width: 36,
-                        height: 36,
-                        marginRight: 8,
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginRight: 16,
                       }}
-                    />
-                  </Link>
-                  <Link
-                    href={'http://twitter.com/'}
-                    underline={'none'}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginRight: 16,
-                    }}
-                  >
-                    <InstagramIcon
+                    >
+                      <TwitterIcon
+                        style={{
+                          color: '#1DA1F2',
+                          width: 36,
+                          height: 36,
+                          marginRight: 8,
+                        }}
+                      />
+                    </Link>
+                  )}
+                  {streamer.instagram && (
+                    <Link
+                      href={streamer.instagram}
+                      underline={'none'}
                       style={{
-                        color: 'white',
-                        width: 36,
-                        height: 36,
-                        borderRadius: 10,
-                        marginRight: 8,
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginRight: 16,
                       }}
-                      className={classes.insta}
-                    />
-                  </Link>
-                  <Link
-                    href={'http://twitter.com/'}
-                    underline={'none'}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginRight: 15,
-                    }}
-                  >
-                    <InstagramIcon
+                    >
+                      <InstagramIcon
+                        style={{
+                          color: 'white',
+                          width: 36,
+                          height: 36,
+                          borderRadius: 10,
+                          marginRight: 8,
+                        }}
+                        className={classes.insta}
+                      />
+                    </Link>
+                  )}
+                  {streamer.tiktok && (
+                    <Link
+                      href={streamer.tiktok}
+                      underline={'none'}
                       style={{
-                        color: 'white',
-                        width: 36,
-                        height: 36,
-                        borderRadius: 10,
-                        marginRight: 8,
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginRight: 15,
                       }}
-                      className={classes.insta}
-                    />
-                  </Link>
+                    >
+                      <InstagramIcon
+                        style={{
+                          color: 'white',
+                          width: 36,
+                          height: 36,
+                          borderRadius: 10,
+                          marginRight: 8,
+                        }}
+                        className={classes.insta}
+                      />
+                    </Link>
+                  )}
+                  {streamer.youtube && (
+                    <Link
+                      href={streamer.youtube}
+                      underline={'none'}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginRight: 15,
+                      }}
+                    >
+                      <YouTubeIcon
+                        style={{
+                          color: '#FF0000',
+                          width: 36,
+                          height: 36,
+                          borderRadius: 10,
+                          marginRight: 8,
+                        }}
+                      />
+                    </Link>
+                  )}
+                  {streamer.facebook && (
+                    <Link
+                      href={streamer.facebook}
+                      underline={'none'}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginRight: 15,
+                      }}
+                    >
+                      <FacebookIcon
+                        style={{
+                          color: 'white',
+                          width: 36,
+                          height: 36,
+                          borderRadius: 10,
+                          marginRight: 8,
+                        }}
+                        className={classes.insta}
+                      />
+                    </Link>
+                  )}
                 </div>
               </div>
             </CardContent>

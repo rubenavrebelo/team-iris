@@ -9,6 +9,7 @@ import iris from '../../media/iris.mp4';
 import logo from '../../media/logo_draft.png';
 import { StreamerObject } from '../../types/types';
 import logoMain from '../../media/logo_main.png';
+import { MainVideo } from '../main-video/MainVideo';
 
 const useStyles = makeStyles()((theme) => ({
   videoOverlay: {
@@ -59,7 +60,6 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
     null
   );
   const [streamers, setStreamers] = React.useState<StreamerObject[]>([]);
-  const [showVideo, setShowVideo] = React.useState<boolean>(false);
 
   const { classes } = useStyles();
 
@@ -71,13 +71,6 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
 
     if (streamers.length === 0) fetchData();
   }, [streamers]);
-
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowVideo(true);
-    }, 1800);
-    return () => clearTimeout(timeout);
-  }, []);
 
   const setStreamer = (streamer: StreamerObject) => {
     setStreamerInfo(streamer);
@@ -114,10 +107,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
 
   return (
     <>
-      <div
-        id="streamers"
-        style={{ minHeight: '100vh', position: 'relative', zIndex: 10 }}
-      >
+      <div id="streamers" style={{ position: 'relative', zIndex: 10 }}>
         {streamerInfo != null ? (
           <div style={{ marginTop: 90 }}>
             <StreamerDetails
@@ -131,43 +121,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
             />
           </div>
         ) : (
-          <div style={{ minHeight: '100vh', textAlign: 'center' }}>
-            {!showVideo ? (
-              <div
-                style={{
-                  height: '110vh',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                className={classes.hidden}
-              >
-                <img src={logo} alt={'iris'} />
-              </div>
-            ) : (
-              <div>
-                <video
-                  src={iris}
-                  controls={false}
-                  autoPlay
-                  muted
-                  loop
-                  style={{ width: '100%' }}
-                />
-                <div className={classes.videoOverlay}>
-                  <img src={logoMain} style={{ width: '50%' }} />
-
-                  <Typography className={classes.subText}>
-                    Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no{' '}
-                    <Link href={'http://www.twitch.tv/team/iris'}>@Twitch</Link>
-                    .
-                    <br />
-                    Orgulhoses das nossas individualidades.
-                  </Typography>
-                </div>
-              </div>
-            )}
-          </div>
+          <MainVideo />
         )}
       </div>
       {streamers != null && (
@@ -179,8 +133,11 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
             alignItems: 'center',
           }}
         >
-          <Typography variant={'h3'} style={{ marginBottom: 20 }}>
-            Meet our team
+          <Typography
+            variant={'h3'}
+            style={{ marginBottom: 20, fontFamily: 'Sugo' }}
+          >
+            Conheçam a Equipa
           </Typography>
           <StreamerGrid streamers={streamers} setStreamerInfo={setStreamer} />
         </div>

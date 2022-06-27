@@ -22,6 +22,7 @@
   z-index: -1;
   border-bottom-left-radius: 23px;
   border-top-right-radius: 23px;
+  margin-bottom: -50px;
 }
 .GradientBorder::before {
   content: '';
@@ -33,6 +34,23 @@
   background: linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6);
   z-index: -2;
   filter: blur(40px);
+  border-bottom-left-radius: 23px;
+  border-top-right-radius: 23px;
+}
+
+.nameBorder {
+  position: relative;
+  width: fit-content;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  background: transparent;
+  cursor: pointer;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
   border-bottom-left-radius: 23px;
   border-top-right-radius: 23px;
 }
