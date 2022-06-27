@@ -65,7 +65,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('http://188.166.122.193/streamers');
+      const result = await axios.get('https://188.166.122.193/streamers');
       setStreamers(result.data);
     };
 
