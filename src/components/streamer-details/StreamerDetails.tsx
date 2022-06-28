@@ -136,11 +136,14 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
               title="video"
               src={
                 streamer.videourl.includes('player.twitch.tv')
-                  ? streamer.videourl.replace('www.example.com', 'localhost')
+                  ? streamer.videourl.replace(
+                      'www.example.com',
+                      'phenomenateam.netlify.app'
+                    )
                   : currentVideo === 'youtube'
                   ? streamer.videourl
                   : twitchEmbed
-                      .replace('www.example.com', 'localhost')
+                      .replace('www.example.com', 'phenomenateam.netlify.app')
                       .replace('%streamername%', streamer.username)
               }
               frameBorder="0"
