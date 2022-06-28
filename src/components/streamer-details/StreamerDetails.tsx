@@ -109,8 +109,6 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 }}
               >
                 {currentVideo === 'youtube' ? (
-                  <YouTubeIcon style={{ marginRight: 8, color: '#FF0000' }} />
-                ) : (
                   <TwitchLogo
                     style={{
                       fill: 'pink',
@@ -119,6 +117,8 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                       marginRight: 8,
                     }}
                   />
+                ) : (
+                  <YouTubeIcon style={{ marginRight: 8, color: '#FF0000' }} />
                 )}
                 <Typography style={{ color: 'white', fontWeight: 500 }}>
                   Swap to {currentVideo === 'youtube' ? 'Channel' : 'Trailer'}

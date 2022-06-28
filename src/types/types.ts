@@ -19,9 +19,9 @@ export interface PronounsObject {
 }
 
 export const Pronouns: PronounsObject = {
-  he: 'He/Him',
-  she: 'She/Her',
-  they: 'They/Them',
+  he: 'Ele/Dele',
+  she: 'Ela/Dela',
+  they: 'Elu/Delu',
   it: 'It/Its',
   per: 'Per/Per',
   ve: 'Ve/Ver',
