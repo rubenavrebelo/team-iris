@@ -9,9 +9,6 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 const accessTokenSecret = 'youraccesstokensecret';
 var https = require('https');
-var privateKey = fs.readFileSync('sslcert/server.key', 'utf8');
-var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
-var credentials = { key: privateKey, cert: certificate };
 
 var app = express();
 
@@ -232,6 +229,6 @@ app.post('/login', (req, res, next) => {
   }
 });
 
-var httpsServer = https.createServer(credentials, app);
-
-httpsServer.listen(8080);
+app.listen(process.env.PORT || '8080', async () => {
+  console.log('Cmon server lets get SERVING');
+});
