@@ -10,6 +10,25 @@ const saltRounds = 10;
 const accessTokenSecret = 'youraccesstokensecret';
 var https = require('https');
 
+const privateKey = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/privkey.pem',
+  'utf8'
+);
+const certificate = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/cert.pem',
+  'utf8'
+);
+const ca = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/chain.pem',
+  'utf8'
+);
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca,
+};
+
 var app = express();
 
 app.use(cors());
@@ -229,6 +248,6 @@ app.post('/login', (req, res, next) => {
   }
 });
 
-app.listen(process.env.PORT || '8080', async () => {
-  console.log('Cmon server lets get SERVING');
+httpsServer.listen(443, () => {
+  console.log('HTTPS Server running on port 443');
 });
