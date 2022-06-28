@@ -179,7 +179,11 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 <Typography
                   gutterBottom
                   variant="h4"
-                  style={{ fontSize: '2.55vw' }}
+                  style={{
+                    fontSize: '2.55vw',
+                    fontFamily: 'Sugo',
+                    letterSpacing: '1.6px',
+                  }}
                 >
                   {streamer.username}
                 </Typography>

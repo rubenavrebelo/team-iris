@@ -10,6 +10,8 @@ import logo from '../../media/logo_draft.png';
 import { StreamerObject } from '../../types/types';
 import logoMain from '../../media/logo_main.png';
 import { MainVideo } from '../main-video/MainVideo';
+import _ from 'lodash';
+import streamerBackground from '../../media/background.png';
 
 const useStyles = makeStyles()((theme) => ({
   videoOverlay: {
@@ -66,7 +68,16 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
   React.useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('https://www.rubenrebelo.xyz/streamers');
-      setStreamers(result.data);
+      setStreamers(
+        _.orderBy(
+          _.shuffle(result.data),
+          [
+            (i: StreamerObject) =>
+              i.role === 'Founder' ? 1 : i.role === 'Leader' ? 2 : 3,
+          ],
+          ['asc']
+        )
+      );
     };
 
     if (streamers.length === 0) fetchData();
@@ -127,15 +138,21 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
       {streamers != null && (
         <div
           style={{
-            marginTop: 50,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundImage: `url(${streamerBackground})`,
+            paddingBottom: 75,
           }}
         >
           <Typography
             variant={'h3'}
-            style={{ marginBottom: 20, fontFamily: 'Sugo' }}
+            style={{
+              marginBottom: 20,
+              fontFamily: 'Sugo',
+              marginTop: 50,
+              fontSize: 80,
+            }}
           >
             Conheçam a Equipa
           </Typography>
