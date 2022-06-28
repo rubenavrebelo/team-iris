@@ -248,6 +248,8 @@ app.post('/login', (req, res, next) => {
   }
 });
 
-https.listen(443, () => {
+const httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(443, () => {
   console.log('HTTPS Server running on port 443');
 });
