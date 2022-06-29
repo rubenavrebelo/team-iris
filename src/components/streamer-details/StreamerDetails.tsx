@@ -1,7 +1,10 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CloseIcon from '@mui/icons-material/Close';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   Avatar,
   ButtonBase,
@@ -16,14 +19,12 @@ import {
 import { createTheme } from '@mui/material/styles';
 import parse from 'html-react-parser';
 import * as React from 'react';
+import { makeStyles } from 'tss-react/mui';
+import { ReactComponent as TiktokIcon } from '../../media/tiktok.svg';
 import { ReactComponent as TwitchLogo } from '../../media/twitch.svg';
 import { StreamerObject } from '../../types/types';
 import GenderBits from '../gender-bits/GenderBits';
 import './StreamerDetails.scss';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import { makeStyles } from 'tss-react/mui';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import FacebookIcon from '@mui/icons-material/Facebook';
 
 const useStyles = makeStyles()((theme) => ({
   insta: {
@@ -85,7 +86,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
               style={{ margin: '0 auto' }}
               onClick={(e) => handlePrevious(e)}
             >
-              <Avatar>
+              <Avatar style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}>
                 <ChevronLeftIcon fontSize={'large'} />
               </Avatar>
             </ButtonBase>
@@ -125,6 +126,17 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 </Typography>
               </ButtonBase>
             )}
+            <div
+              style={{
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                background:
+                  'linear-gradient(-90deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                marginLeft: 10,
+                marginTop: 10,
+              }}
+            ></div>
             <iframe
               style={{
                 position: 'absolute',
@@ -152,10 +164,22 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
           </div>
         </Grid>
         <Grid item xs={3}>
-          <Card
+          <div
             style={{
               width: '23vw',
-              height: '64.5vh',
+              height: '64vh',
+              position: 'absolute',
+              background:
+                'linear-gradient(145deg, #082399, #4292cc, #ec6acc, #e808b6)',
+              marginLeft: 10,
+              marginTop: 10,
+            }}
+          ></div>
+          <Card
+            elevation={0}
+            style={{
+              width: '23vw',
+              height: '64vh',
               display: 'inline-block',
               textAlign: 'unset',
               position: 'relative',
@@ -180,7 +204,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                   gutterBottom
                   variant="h4"
                   style={{
-                    fontSize: '2.55vw',
+                    fontSize: '3.55vw',
                     fontFamily: 'Sugo',
                     letterSpacing: '1.6px',
                   }}
@@ -188,14 +212,30 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                   {streamer.username}
                 </Typography>
                 <div>{genGenderBits()}</div>
+                <div
+                  style={{
+                    width: '100%',
+                    height: 2,
+                    background:
+                      'linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                    marginTop: 16,
+                  }}
+                />
                 <Typography variant={'body2'} style={{ fontSize: '1.2rem' }}>
                   {parse(streamer.description)}
                 </Typography>
               </div>
+
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography style={{ marginBottom: 12 }}>
-                  Find me on my socials:
-                </Typography>
+                <div
+                  style={{
+                    width: '100%',
+                    height: 2,
+                    background:
+                      'linear-gradient(270deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                    marginBottom: 16,
+                  }}
+                />
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <Link
                     href={`http://twitch.tv/${streamer.username}`}
@@ -267,15 +307,13 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                         marginRight: 15,
                       }}
                     >
-                      <InstagramIcon
+                      <TiktokIcon
                         style={{
-                          color: 'white',
                           width: 36,
                           height: 36,
                           borderRadius: 10,
                           marginRight: 8,
                         }}
-                        className={classes.insta}
                       />
                     </Link>
                   )}
@@ -312,13 +350,12 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                     >
                       <FacebookIcon
                         style={{
-                          color: 'white',
+                          color: '#4267B2',
                           width: 36,
                           height: 36,
                           borderRadius: 10,
                           marginRight: 8,
                         }}
-                        className={classes.insta}
                       />
                     </Link>
                   )}
@@ -333,7 +370,7 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
               style={{ margin: '0 auto' }}
               onClick={(e) => handleNext(e)}
             >
-              <Avatar>
+              <Avatar style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}>
                 <ChevronRightIcon fontSize={'large'} />
               </Avatar>
             </ButtonBase>

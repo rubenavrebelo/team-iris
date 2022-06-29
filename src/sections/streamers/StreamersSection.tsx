@@ -1,17 +1,14 @@
-import { Link, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import axios from 'axios';
+import _ from 'lodash';
 import * as React from 'react';
 import { keyframes } from 'tss-react';
 import { makeStyles } from 'tss-react/mui';
 import StreamerDetails from '../../components/streamer-details/StreamerDetails';
 import StreamerGrid from '../../components/streamer-grid/StreamerGrid';
-import iris from '../../media/iris.mp4';
-import logo from '../../media/logo_draft.png';
-import { StreamerObject } from '../../types/types';
-import logoMain from '../../media/logo_main.png';
-import { MainVideo } from '../main-video/MainVideo';
-import _ from 'lodash';
 import streamerBackground from '../../media/background.png';
+import { StreamerObject } from '../../types/types';
+import { MainVideo } from '../main-video/MainVideo';
 
 const useStyles = makeStyles()((theme) => ({
   videoOverlay: {
@@ -62,8 +59,6 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
     null
   );
   const [streamers, setStreamers] = React.useState<StreamerObject[]>([]);
-
-  const { classes } = useStyles();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -120,7 +115,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
     <>
       <div id="streamers" style={{ position: 'relative', zIndex: 10 }}>
         {streamerInfo != null ? (
-          <div style={{ marginTop: 90 }}>
+          <div>
             <StreamerDetails
               position={streamers.indexOf(streamerInfo)}
               setStreamer={setStreamerById}

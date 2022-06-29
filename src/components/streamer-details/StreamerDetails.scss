@@ -1,37 +1,58 @@
 .player-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25;
-    height: 0;
-  }
-  
-  .react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25;
+  height: 0;
+}
 
-  .details-background {
-    background: linear-gradient(210deg, #082399, #4292cc, #ec6acc, #e808b6);
-    background-size: 800% 800%;
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-    -webkit-animation: BitsAnimation 18s ease infinite;
-    -moz-animation: BitsAnimation 18s ease infinite;
-    animation: BitsAnimation 18s ease infinite;
+.details-background {
+  background: linear-gradient(210deg, #082399, #4292cc, #ec6acc, #e808b6);
+  background-size: 500% 500%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: BitsAnimation 18s ease infinite;
+  -moz-animation: BitsAnimation 18s ease infinite;
+  animation: BitsAnimation 18s ease infinite;
 }
 
 @-webkit-keyframes BitsAnimation {
-    0%{background-position:66% 0%}
-    50%{background-position:35% 100%}
-    100%{background-position:66% 0%}
+  0% {
+    background-position: 66% 0%;
+  }
+  50% {
+    background-position: 35% 100%;
+  }
+  100% {
+    background-position: 66% 0%;
+  }
 }
 @-moz-keyframes BitsAnimation {
-    0%{background-position:66% 0%}
-    50%{background-position:35% 100%}
-    100%{background-position:66% 0%}
+  0% {
+    background-position: 66% 0%;
+  }
+  50% {
+    background-position: 35% 100%;
+  }
+  100% {
+    background-position: 66% 0%;
+  }
 }
 @keyframes BitsAnimation {
-    0%{background-position:66% 0%}
-    50%{background-position:35% 100%}
-    100%{background-position:66% 0%}
+  0% {
+    background-position: 66% 0%;
+  }
+  50% {
+    background-position: 35% 100%;
+  }
+  100% {
+    background-position: 66% 0%;
+  }
 }
