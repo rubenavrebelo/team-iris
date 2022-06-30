@@ -62,16 +62,18 @@ app.set('trust proxy', 1);
 const writeImageAvatar = (src, title) => {
   let base64Image = src.split(';base64,').pop();
   let imgBuffer = Buffer.from(base64Image, 'base64');
-  const path = `avatars/${title}`;
+  const path = `avatars/${title}/.webp`;
 
   sharp(imgBuffer)
     .resize(500, 500)
     .webp()
-    .toFile('./public/' + path + '.webp')
+    .toFile('./public/' + path)
     .then((data) => {
       console.log('normal: ', data);
     })
     .catch((err) => console.log(`downisze issue ${err}`));
+
+  return path;
 };
 
 const updateProductByID = (id, cols) => {
