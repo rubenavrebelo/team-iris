@@ -63,24 +63,9 @@ const writeImageAvatar = (src, title) => {
   const path = `avatars/${title}`;
 
   sharp(src)
-    .rotate()
     .resize(500, 500)
-    .toBuffer()
-    .then((newBuffer) => {
-      req.files.image.data = newBuffer;
-
-      req.files.image.mv('./public/' + path + '.webp', function (err) {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res.status(200).json({
-          message: 'image uploaded successfully',
-        });
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .webp()
+    .toFile('./public' + path + '.webp');
 
   return path;
 };
