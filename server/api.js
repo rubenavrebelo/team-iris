@@ -43,6 +43,11 @@ app.use(
           'https://rubenrebelo.xyz',
           'https://www.rubenrebelo.xyz',
         ],
+        'default-src': [
+          "'self'",
+          'https://rubenrebelo.xyz',
+          'https://www.rubenrebelo.xyz',
+        ],
       },
     },
   })
