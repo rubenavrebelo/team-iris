@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 const accessTokenSecret = 'youraccesstokensecret';
 var https = require('https');
+const sharp = require('sharp');
 
 const privateKey = fs.readFileSync(
   '/etc/letsencrypt/live/rubenrebelo.xyz/privkey.pem',
@@ -36,6 +37,7 @@ app.use(helmet());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
@@ -246,6 +248,10 @@ app.post('/login', (req, res, next) => {
   } else {
     res.sendStatus(401);
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 const httpsServer = https.createServer(credentials, app);
