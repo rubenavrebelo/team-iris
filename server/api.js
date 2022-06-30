@@ -38,7 +38,11 @@ app.use(
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
-        'script-src': ["'self'", 'https://rubenrebelo.xyz'],
+        'script-src': [
+          "'self'",
+          'https://rubenrebelo.xyz',
+          'https://www.rubenrebelo.xyz',
+        ],
       },
     },
   })
