@@ -66,7 +66,7 @@ const writeImageAvatar = (src, title) => {
 
   sharp(imgBuffer)
     .resize(500, 500)
-    .toFile('./public/' + path)
+    .toFile(title)
     .then((info) => console.log(info))
     .catch((err) => console.log(err));
 
