@@ -62,16 +62,11 @@ app.set('trust proxy', 1);
 const writeImageAvatar = (src, title) => {
   let base64Image = src.split(';base64,').pop();
   let imgBuffer = Buffer.from(base64Image, 'base64');
-  const imagePath = `avatars/${path.parse(title).name}.webp`;
+  const imagePath = `avatars/${title}`;
 
   sharp(imgBuffer)
     .resize(500, 500)
-    .webp()
-    .toFile('./public/' + path)
-    .then((data) => {
-      console.log('normal: ', data);
-    })
-    .catch((err) => console.log(`downisze issue ${err}`));
+    .toFile('./public/' + path);
 
   return imagePath;
 };
