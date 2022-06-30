@@ -48,6 +48,7 @@ app.use(
           'https://rubenrebelo.xyz',
           'https://www.rubenrebelo.xyz',
         ],
+        'img-src': ["'self'", 'https: data:'],
       },
     },
   })
