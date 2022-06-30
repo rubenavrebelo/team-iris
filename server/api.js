@@ -10,6 +10,7 @@ const saltRounds = 10;
 const accessTokenSecret = 'youraccesstokensecret';
 var https = require('https');
 const sharp = require('sharp');
+var compression = require('compression');
 
 const privateKey = fs.readFileSync(
   '/etc/letsencrypt/live/rubenrebelo.xyz/privkey.pem',
@@ -57,6 +58,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(compression());
 app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
@@ -64,8 +66,6 @@ const writeImageAvatar = (src, title) => {
   let imgBuffer = Buffer.from(base64Image, 'base64');
   const imagePath = `avatars/${path.parse(title).name}.webp`;
 
-  console.log();
-  console.log('imagePath ', imagePath);
   sharp(imgBuffer)
     .resize(500, 500)
     .webp()

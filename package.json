@@ -19,6 +19,7 @@
     "@types/react-html-parser": "^2.0.1",
     "@types/react-scroll": "^1.8.2",
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
@@ -45,8 +46,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "INLINE_RUNTIME_CHUNK=false react-scripts start",
+    "build": "react-scripts build && scp -r ./server/build/* root@188.166.122.193:~/phenomena/server/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",

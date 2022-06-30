@@ -42,7 +42,6 @@ export const StreamerEdit = (props: any) => (
         source={'description'}
         toolbar={<RichTextInputToolbar size="large" />}
       />
-      <RichTextInput source={'description'} />
       <TextInput source="videourl" />
       <TextInput source="twitter" />
       <TextInput source="youtube" />
