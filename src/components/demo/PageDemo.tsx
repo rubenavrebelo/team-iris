@@ -19,7 +19,7 @@ export default function PageDemo() {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('https://www.rubenrebelo.xyz/sections');
+      const result = await axios.get('http://localhost:8080/sections');
       setSections(result.data);
     };
 

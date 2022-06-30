@@ -118,8 +118,8 @@ app.post('/streamers', async (req, res) => {
       username,
       url,
       description,
-      'https://www.rubenrebelo.xyz/' + path,
-      'https://www.rubenrebelo.xyz/avatars/eevo_pose.gif',
+      'http://localhost:8080/' + path,
+      'http://localhost:8080/avatars/eevo_pose.gif',
       pronouns,
       videourl,
       twitter ? twitter : null,
@@ -153,7 +153,7 @@ app.put('/streamers/:id', async (req, res) => {
   if (!stringAvatar) {
     const image = avatar.src;
     const path = writeImageAvatar(image, avatar.title);
-    body.avatar = 'https://www.rubenrebelo.xyz/' + path;
+    body.avatar = 'http://localhost:8080/' + path;
   } else {
     delete body.avatar;
   }
