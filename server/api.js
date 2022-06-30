@@ -60,11 +60,28 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
-  let base64Image = src.split(';base64,').pop();
   const path = `avatars/${title}`;
-  fs.writeFile('./public/' + path, base64Image, 'base64', function (err) {
-    console.log('File created');
-  });
+
+  sharp(src)
+    .rotate()
+    .resize(500, 500)
+    .toBuffer()
+    .then((newBuffer) => {
+      req.files.image.data = newBuffer;
+
+      req.files.image.mv('./public/' + path + '.webp', function (err) {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        res.status(200).json({
+          message: 'image uploaded successfully',
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   return path;
 };
 
