@@ -60,14 +60,18 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
+  let base64Image = src.split(';base64,').pop();
+  let imgBuffer = Buffer.from(base64Image, 'base64');
   const path = `avatars/${title}`;
 
-  sharp(src)
+  sharp(imgBuffer)
     .resize(500, 500)
     .webp()
-    .toFile('./public' + path + '.webp');
-
-  return path;
+    .toFile('./public' + path + '.webp')
+    .then((data) => {
+      console.log('normal: ', data);
+    })
+    .catch((err) => console.log(`downisze issue ${err}`));
 };
 
 const updateProductByID = (id, cols) => {
