@@ -64,10 +64,11 @@ const writeImageAvatar = (src, title) => {
   let imgBuffer = Buffer.from(base64Image, 'base64');
   const imagePath = `avatars/${title}`;
 
+  console.log();
   console.log('imagePath ', imagePath);
   sharp(imgBuffer)
     .resize(500, 500)
-    .toFile('./public/' + path);
+    .toFile('./public/' + imagePath);
 
   return imagePath;
 };
