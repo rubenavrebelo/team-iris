@@ -61,11 +61,16 @@ app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
   let base64Image = src.split(';base64,').pop();
-  const path = `avatars/${title}`;
-  fs.writeFile('./public/' + path, base64Image, 'base64', function (err) {
-    console.log('File created');
-  });
-  return path;
+  let imgBuffer = Buffer.from(base64Image, 'base64');
+  const imagePath = `avatars/${title}`;
+
+  sharp(imgBuffer)
+    .resize(500, 500)
+    .toFile('./public/' + path)
+    .then((info) => console.log(info))
+    .catch((err) => console.log(err));
+
+  return imagePath;
 };
 
 const updateProductByID = (id, cols) => {
