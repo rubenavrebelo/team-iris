@@ -1,6 +1,6 @@
 import jsonServerProvider from 'ra-data-json-server';
 
-const dataProvider = jsonServerProvider('http://localhost:8080');
+const dataProvider = jsonServerProvider('https://www.rubenrebelo.xyz');
 
 const convertFileToBase64 = (file: any) =>
   new Promise((resolve, reject) => {

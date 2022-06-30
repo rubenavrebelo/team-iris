@@ -62,7 +62,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('http://localhost:8080/streamers');
+      const result = await axios.get('https://www.rubenrebelo.xyz/streamers');
       setStreamers(
         _.orderBy(
           _.shuffle(result.data),
