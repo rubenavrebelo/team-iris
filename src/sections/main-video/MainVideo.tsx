@@ -6,9 +6,9 @@ import { makeStyles } from 'tss-react/mui';
 import StreamerDetails from '../../components/streamer-details/StreamerDetails';
 import StreamerGrid from '../../components/streamer-grid/StreamerGrid';
 import iris from '../../media/iris.mp4';
-import logo from '../../media/logo_draft.png';
+import logo from '../../media/logo_draft.webp';
 import { StreamerObject } from '../../types/types';
-import logoMain from '../../media/logo_main.png';
+import logoMain from '../../media/logo_main.webp';
 
 const useStyles = makeStyles()((theme) => ({
   videoOverlay: {
@@ -77,7 +77,9 @@ export const MainVideo: React.FC<{}> = ({}) => {
             }}
             className={classes.hidden}
           >
-            <img src={logo} alt={'iris'} />
+            <picture>
+              <img src={logo} alt={'iris'} />
+            </picture>
           </div>
         ) : (
           <div>
@@ -90,8 +92,9 @@ export const MainVideo: React.FC<{}> = ({}) => {
               style={{ width: '100%' }}
             />
             <div className={classes.videoOverlay}>
-              <img src={logoMain} style={{ width: '50%' }} />
-
+              <picture>
+                <img src={logoMain} style={{ width: '50%' }} />
+              </picture>
               <Typography className={classes.subText}>
                 Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no{' '}
                 <Link

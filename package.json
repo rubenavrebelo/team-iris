@@ -26,12 +26,10 @@
     "html-react-parser": "^1.4.12",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "multer": "^1.4.2",
     "node-sass": "^7.0.1",
     "pg": "^8.5.1",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^4.1.0",
-    "ra-data-simple-rest": "^4.1.0",
     "ra-input-rich-text": "^4.1.3",
     "react": "^18.1.0",
     "react-admin": "^4.1.0",
@@ -42,11 +40,10 @@
     "react-scroll": "^1.8.2",
     "sharp": "^0.30.7",
     "tss-react": "^3.6.2",
-    "typescript": "^4.6.4",
-    "web-vitals": "^1.1.1"
+    "typescript": "^4.6.4"
   },
   "scripts": {
-    "start": "INLINE_RUNTIME_CHUNK=false react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build && scp -r ./server/build/* root@188.166.122.193:~/phenomena/server/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

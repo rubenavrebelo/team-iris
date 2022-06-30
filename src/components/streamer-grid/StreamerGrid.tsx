@@ -1,8 +1,6 @@
 import { Grid } from '@mui/material';
-import * as React from 'react';
 import { StreamerObject } from '../../types/types';
 import Streamer from '../streamer/Streamer';
-import _ from 'lodash';
 
 export interface StreamerGridProps {
   setStreamerInfo: (streamer: StreamerObject) => void;
