@@ -67,7 +67,7 @@ const writeImageAvatar = (src, title) => {
   sharp(imgBuffer)
     .resize(500, 500)
     .webp()
-    .toFile('./public' + path + '.webp')
+    .toFile('./public/' + path + '.webp')
     .then((data) => {
       console.log('normal: ', data);
     })
