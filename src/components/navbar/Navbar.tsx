@@ -2,7 +2,7 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 import grey from '@mui/material/colors/grey';
 import pink from '@mui/material/colors/pink';
 import * as React from 'react';
-import { Link } from "react-scroll";
+import { Link } from 'react-scroll';
 import { makeStyles } from 'tss-react/mui';
 import logo from '../../media/logo_draft.png';
 import { SectionObject } from '../../types/types';
@@ -18,8 +18,8 @@ export interface NavbarProps {
   detailsOpen: boolean;
   handleFontColor: (val: boolean) => void;
   navbarFontColor: boolean;
+  showSeparators: boolean;
 }
-
 
 export default function Navbar(props: NavbarProps) {
   const [showNav, setShowNav] = React.useState<boolean>(false);
@@ -31,68 +31,109 @@ export default function Navbar(props: NavbarProps) {
       flexGrow: 1,
     },
     section: {
-        color: showNav ? 'white' : navbarColor,
-        cursor: 'pointer',
-        marginRight: 10,
-        marginLeft: 10,
-        display: 'table-cell',
+      color: showNav ? 'white' : navbarColor,
+      cursor: 'pointer',
+      marginRight: 10,
+      marginLeft: 10,
+      display: 'table-cell',
       verticalAlign: 'middle',
-        '&:hover': {
-          color: hoverColor,
-          textDecoration: 'none'
-        },
+      '&:hover': {
+        color: hoverColor,
+        textDecoration: 'none',
+      },
     },
     typo: {
       fontWeight: 500,
-      fontSpacing: 0.6
+      fontSpacing: 0.6,
     },
     toolbar: {
-      height: '100%'
-    }
+      height: '100%',
+    },
   }));
   const { classes } = useStyles();
 
-  
-    React.useEffect(() => {
-      document.addEventListener("scroll", handleScroll);
-      return () => {
-        document.removeEventListener("scroll", handleScroll);
-      }
-    }, [showNav]);
+  React.useEffect(() => {
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [showNav]);
 
-    const handleScroll = () => {
-      const scrolled = document.scrollingElement?.scrollTop
-      if(scrolled) {
-        if(scrolled >= 100) {
-          setShowNav(true)
-          if(props.detailsOpen) {
-            props.handleFontColor(false);
-          }
+  const handleScroll = () => {
+    const scrolled = document.scrollingElement?.scrollTop;
+    if (scrolled) {
+      if (scrolled >= 100) {
+        setShowNav(true);
+        if (props.detailsOpen) {
+          props.handleFontColor(false);
         }
-        else { 
-          if(props.detailsOpen) {
-            props.handleFontColor(true);
-          }
-          setShowNav(false);
+      } else {
+        if (props.detailsOpen) {
+          props.handleFontColor(true);
         }
+        setShowNav(false);
       }
     }
+  };
 
-    const handleClick = () => {
-      // setCurrentSection(event.target);
-    }
+  const handleClick = () => {
+    // setCurrentSection(event.target);
+  };
 
-    return (
-    <AppBar position={'fixed'} style={{height: '8vh', backgroundColor: showNav ? navbarColor : 'transparent'}}
-    elevation={0}>
-        <Toolbar className={classes.toolbar}>
-            <img src={logo} style={{height: '7vh'}} alt={'logo'}/>
-            <div style={{ marginLeft: 'auto', float: 'right', height: '100%', display: 'table', borderSpacing: 26, borderCollapse: 'separate'}}>
-            {props.sections.map((sec) => <Link className={classes.section} to={`${sec.title.replace(/\s/g, '-').toLowerCase()}-section`} offset={-100} smooth={true} onClick={handleClick}>
-              <Typography className={classes.typo} style={{color: props.navbarFontColor ? navbarColor: 'white'}}>{sec.title}</Typography>
-              </Link> )}
-            </div>
-        </Toolbar>
+  return (
+    <AppBar
+      position={'fixed'}
+      style={{
+        height: '8vh',
+        backgroundColor: showNav ? navbarColor : 'transparent',
+      }}
+      elevation={0}
+    >
+      <Toolbar className={classes.toolbar}>
+        <img src={logo} style={{ height: '7vh' }} alt={'Navbar logo'} />
+        <div
+          style={{
+            marginLeft: 'auto',
+            float: 'right',
+            height: '100%',
+            display: 'table',
+            borderSpacing: 26,
+            borderCollapse: 'separate',
+          }}
+        >
+          {props.sections.map((sec, i) => (
+            <Link
+              className={classes.section}
+              to={`${sec.title.replace(/\s/g, '-').toLowerCase()}-section`}
+              offset={-100}
+              smooth={true}
+              onClick={handleClick}
+            >
+              <div style={{ height: '100%', display: 'flex' }}>
+                <Typography
+                  className={classes.typo}
+                  style={{
+                    color: props.navbarFontColor ? navbarColor : 'white',
+                    marginRight: 16,
+                  }}
+                >
+                  {sec.title}
+                </Typography>
+                {i !== props.sections.length - 1 && (
+                  <div
+                    style={{
+                      height: '100%',
+                      width: 2,
+                      background:
+                        'linear-gradient(0deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                    }}
+                  />
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Toolbar>
     </AppBar>
-    );
+  );
 }

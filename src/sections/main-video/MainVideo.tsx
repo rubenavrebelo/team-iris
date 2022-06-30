@@ -49,10 +49,10 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 export interface MainVideoProps {
-  showVideo: boolean;
+  handleSeparators: (val: boolean) => void;
 }
 
-export const MainVideo: React.FC<{}> = ({}) => {
+export const MainVideo: React.FC<MainVideoProps> = ({ handleSeparators }) => {
   const { classes } = useStyles();
 
   const [showVideo, setShowVideo] = React.useState<boolean>(false);
@@ -60,6 +60,7 @@ export const MainVideo: React.FC<{}> = ({}) => {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowVideo(true);
+      handleSeparators(true);
     }, 1800);
     return () => clearTimeout(timeout);
   }, []);
@@ -93,7 +94,11 @@ export const MainVideo: React.FC<{}> = ({}) => {
             />
             <div className={classes.videoOverlay}>
               <picture>
-                <img src={logoMain} style={{ width: '50%' }} />
+                <img
+                  src={logoMain}
+                  style={{ width: '50%' }}
+                  alt={'Video Logo'}
+                />
               </picture>
               <Typography className={classes.subText}>
                 Equipa LGBTQIA2+ Portuguesa a dar cor ao Arco-Íris no{' '}

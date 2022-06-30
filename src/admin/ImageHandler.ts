@@ -14,7 +14,6 @@ const convertFileToBase64 = (file: any) =>
 const myDataProvider = {
   ...dataProvider,
   update: (resource: any, params: any) => {
-    console.log(params.data.avatar);
     if (
       resource !== 'streamers' ||
       !params.data.avatar ||

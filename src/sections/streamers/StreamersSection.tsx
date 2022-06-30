@@ -50,10 +50,12 @@ const useStyles = makeStyles()((theme) => ({
 
 export interface StreamersSectionProps {
   handleFontColor: (val: boolean) => void;
+  handleSeparators: (val: boolean) => void;
 }
 
 export const StreamerSection: React.FC<StreamersSectionProps> = ({
   handleFontColor,
+  handleSeparators,
 }) => {
   const [streamerInfo, setStreamerInfo] = React.useState<StreamerObject | null>(
     null
@@ -127,7 +129,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
             />
           </div>
         ) : (
-          <MainVideo />
+          <MainVideo handleSeparators={handleSeparators} />
         )}
       </div>
       {streamers != null && (

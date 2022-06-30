@@ -21,7 +21,7 @@ export default function Avatar(props: AvatarProps) {
   return (
     <img
       src={props.streamer.avatar}
-      alt={'Eevolicious'}
+      alt={`${props.streamer.username}'s avatar`}
       style={{
         width: '100%',
         height: '100%',

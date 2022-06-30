@@ -16,6 +16,7 @@ export default function PageDemo() {
   const [inStreamerDetails, setInStreamerDetails] =
     React.useState<boolean>(false);
   const [navbarFontColor, setNavbarFontColor] = React.useState<boolean>(false);
+  const [separators, setSeparators] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,10 @@ export default function PageDemo() {
     setInStreamerDetails(val);
   };
 
-  console.log('props', inStreamerDetails);
+  const handleSeparators = (val: boolean) => {
+    setSeparators(val);
+  };
+
   return (
     <div id={'main'}>
       <Navbar
@@ -48,8 +52,12 @@ export default function PageDemo() {
         detailsOpen={inStreamerDetails}
         handleFontColor={handleFontColor}
         navbarFontColor={navbarFontColor}
+        showSeparators={separators}
       />
-      <StreamerSection handleFontColor={handleDetails} />
+      <StreamerSection
+        handleFontColor={handleDetails}
+        handleSeparators={handleSeparators}
+      />
       {sections.map((sec) => (
         <TextSection
           title={sec.title}

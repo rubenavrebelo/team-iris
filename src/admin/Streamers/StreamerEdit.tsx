@@ -25,7 +25,7 @@ export const StreamerEdit = (props: any) => (
       <TextInput source="username" />
       <TextInput source="url" />
       <ImageInput source="avatar" accept={'image/*'}>
-        <ImageField source="src" title="title" />
+        <ImageField source="avatar" title="title" />
       </ImageInput>
       <CheckboxGroupInput
         label="Pronouns"
