@@ -150,12 +150,12 @@ export default function StreamerDetails(props: StreamerDetailsProps) {
                 streamer.videourl.includes('player.twitch.tv')
                   ? streamer.videourl.replace(
                       'www.example.com',
-                      'phenomenateam.netlify.app'
+                      'rubenrebelo.xyz'
                     )
                   : currentVideo === 'youtube'
                   ? streamer.videourl
                   : twitchEmbed
-                      .replace('www.example.com', 'phenomenateam.netlify.app')
+                      .replace('www.example.com', 'rubenrebelo.xyz')
                       .replace('%streamername%', streamer.username)
               }
               frameBorder="0"

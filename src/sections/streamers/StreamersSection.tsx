@@ -64,7 +64,9 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('https://www.rubenrebelo.xyz/streamers');
+      const result = await axios.get(
+        `${process.env.REACT_APP_API_URL}streamers`
+      );
       setStreamers(
         _.orderBy(
           _.shuffle(result.data),

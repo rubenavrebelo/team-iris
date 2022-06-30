@@ -125,7 +125,7 @@ export default function Navbar(props: NavbarProps) {
                       height: '100%',
                       width: 2,
                       background:
-                        'linear-gradient(0deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                        'linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6)',
                     }}
                   />
                 )}

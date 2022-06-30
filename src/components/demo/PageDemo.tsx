@@ -20,7 +20,9 @@ export default function PageDemo() {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('https://www.rubenrebelo.xyz/sections');
+      const result = await axios.get(
+        `${process.env.REACT_APP_API_URL}sections`
+      );
       setSections(result.data);
     };
 

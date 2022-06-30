@@ -179,12 +179,21 @@ app.put('/streamers/:id', async (req, res) => {
     '^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$'
   );
   const stringAvatar = typeof avatar === 'string';
-  if (fs.existsSync(`./public/avatars/${avatar.title}`)) {
-    fs.unlinkSync(`./public/avatars/${avatar.title}`);
-  }
+
   const image = avatar.src;
   const path = writeImageAvatar(image, avatar.title);
   body.avatar = 'https://www.rubenrebelo.xyz/' + path;
+  if (!stringAvatar) {
+    const image = avatar.src;
+    const path = writeImageAvatar(image, avatar.title);
+    body.avatar = 'https://www.rubenrebelo.xyz/' + path;
+  } else {
+    if (fs.existsSync(`./public/avatars/${avatar.title}`)) {
+      fs.unlinkSync(`./public/avatars/${avatar.title}`);
+    } else {
+      delete body.avatar;
+    }
+  }
 
   const values = Object.keys(body).map(function (key) {
     return req.body[key];
