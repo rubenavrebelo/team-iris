@@ -63,6 +63,8 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(compression());
+app.use(expressStaticGzip(path.join(__dirname, 'build')));
+
 app.set('trust proxy', 1);
 
 const writeImageAvatar = (src, title) => {
