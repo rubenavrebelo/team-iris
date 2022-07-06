@@ -6,11 +6,13 @@ const path = require('path');
 const helmet = require('helmet');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const expressStaticGzip = require('express-static-gzip');
+const https = require('https');
+const sharp = require('sharp');
+const compression = require('compression');
+
 const saltRounds = 10;
 const accessTokenSecret = 'youraccesstokensecret';
-var https = require('https');
-const sharp = require('sharp');
-var compression = require('compression');
 
 const privateKey = fs.readFileSync(
   '/etc/letsencrypt/live/rubenrebelo.xyz/privkey.pem',
