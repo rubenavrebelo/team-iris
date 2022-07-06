@@ -87,6 +87,7 @@ export default function PageDemo() {
             style={{
               backgroundColor: 'white',
               padding: 15,
+              marginTop: i === 0 ? 40 : 0,
             }}
           >
             {i !== 0 && (

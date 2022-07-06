@@ -17,14 +17,24 @@ export default function TextSection(props: TextSectionProps) {
       id={`${props.title.replace(/\s/g, '-').toLowerCase()}-section`}
       style={{ textAlign: position ? position : 'left' }}
     >
-      <div className={'innerSection'}>
+      <div
+        className={'innerSection'}
+        style={{
+          alignItems:
+            position === 'right'
+              ? 'end'
+              : position === 'center'
+              ? 'center'
+              : 'baseline',
+        }}
+      >
         <Typography
           variant={'h2'}
           style={{ fontFamily: 'Sugo', letterSpacing: 0 }}
         >
           {props.title}
         </Typography>
-        <Typography>{parse(text)}</Typography>
+        <Typography style={{ width: '50%' }}>{parse(text)}</Typography>
       </div>
     </div>
   );
