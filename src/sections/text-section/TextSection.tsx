@@ -34,7 +34,9 @@ export default function TextSection(props: TextSectionProps) {
         >
           {props.title}
         </Typography>
-        <Typography style={{ width: '50%' }}>{parse(text)}</Typography>
+        <Typography style={{ width: '50%', fontSize: '1.2rem' }}>
+          {parse(text)}
+        </Typography>
       </div>
     </div>
   );
