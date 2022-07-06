@@ -9,6 +9,10 @@
   cursor: pointer;
   border-bottom-left-radius: 23px;
   border-top-right-radius: 23px;
+  @media screen and (max-width: 480px) {
+    width: 18vw;
+    height: 18vw;
+  }
 }
 
 .GradientBorder::after {

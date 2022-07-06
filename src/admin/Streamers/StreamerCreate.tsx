@@ -47,7 +47,7 @@ const validateUserCreation = (values: any) => {
 };
 
 export const StreamerCreate = (props: any) => (
-  <Create {...props}>
+  <Create {...props} redirect={'list'}>
     <SimpleForm validate={validateUserCreation}>
       <TextInput source="username" />
       <TextInput source="url" />

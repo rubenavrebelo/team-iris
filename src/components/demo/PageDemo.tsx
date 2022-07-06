@@ -10,7 +10,7 @@ import './Demo.scss';
 import footbarBackground from '../../media/fundo_zolhos_brancos_sem_sombras2.png';
 import { makeStyles } from 'tss-react/mui';
 import TwitterIcon from '@mui/icons-material/Twitter';
-
+import './main.scss';
 const footbarColor = grey[900];
 
 const useStyles = makeStyles()((theme) => ({
@@ -25,6 +25,16 @@ const useStyles = makeStyles()((theme) => ({
     backgroundSize: '120%',
     backgroundPositionX: '68%',
     position: 'relative',
+  },
+  copyRights: {
+    color: 'white',
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    fontSize: 12,
+    ['@media (max-width:882px)']: {
+      fontSize: 8,
+    },
   },
 }));
 
@@ -61,7 +71,7 @@ export default function PageDemo() {
   };
 
   return (
-    <div id={'main'}>
+    <div id={'main'} className={'main'}>
       <Navbar
         section={currentSection}
         setCurrentSection={setCurrentSection}
@@ -99,16 +109,7 @@ export default function PageDemo() {
         ))}
       </div>
       <footer className={classes.footbar}>
-        <Typography
-          style={{
-            color: 'white',
-            position: 'absolute',
-            right: 0,
-            bottom: 0,
-            fontSize: 12,
-          }}
-        >
-          {' '}
+        <Typography className={classes.copyRights}>
           Team Iris {'& '}
           <Link
             href={'https://github.com/rubenavrebelo'}

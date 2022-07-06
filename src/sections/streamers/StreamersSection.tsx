@@ -46,6 +46,16 @@ const useStyles = makeStyles()((theme) => ({
             }
             `} 1.5s ease-in-out`,
   },
+  meetTeam: {
+    marginBottom: 20,
+    fontFamily: 'Sugo',
+    marginTop: 50,
+    fontSize: '5em',
+    ['@media (max-width:882px)']: {
+      // eslint-disable-line no-useless-computed-key
+      textAlign: 'center',
+    },
+  },
 }));
 
 export interface StreamersSectionProps {
@@ -59,6 +69,8 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
     null
   );
   const [streamers, setStreamers] = React.useState<StreamerObject[]>([]);
+
+  const { classes } = useStyles();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -142,15 +154,7 @@ export const StreamerSection: React.FC<StreamersSectionProps> = ({
             paddingBottom: 75,
           }}
         >
-          <Typography
-            variant={'h3'}
-            style={{
-              marginBottom: 20,
-              fontFamily: 'Sugo',
-              marginTop: 50,
-              fontSize: 80,
-            }}
-          >
+          <Typography variant={'h3'} className={classes.meetTeam}>
             Conheçam a Equipa
           </Typography>
           <StreamerGrid streamers={streamers} setStreamerInfo={setStreamer} />
