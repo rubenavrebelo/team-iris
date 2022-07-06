@@ -1,7 +1,7 @@
 export const authProvider = {
   // called when the user attempts to log in
   login: ({ username, password }: any) => {
-    const request = new Request('https://www.rubenrebelo.xyz/login', {
+    const request = new Request(`${process.env.REACT_APP_API_URL}login`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: new Headers({ 'Content-Type': 'application/json' }),

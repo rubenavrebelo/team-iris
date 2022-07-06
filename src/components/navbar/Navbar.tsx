@@ -18,11 +18,11 @@ export interface NavbarProps {
   detailsOpen: boolean;
   handleFontColor: (val: boolean) => void;
   navbarFontColor: boolean;
-  showSeparators: boolean;
 }
 
 export default function Navbar(props: NavbarProps) {
   const [showNav, setShowNav] = React.useState<boolean>(false);
+  const [showSeparators, setShowSeparator] = React.useState<boolean>(false);
   const useStyles = makeStyles()((theme) => ({
     root: {
       flexGrow: 1,
@@ -43,8 +43,8 @@ export default function Navbar(props: NavbarProps) {
       },
     },
     typo: {
-      fontWeight: 500,
-      fontSpacing: 0.6,
+      letterSpacing: '1.1px',
+      fontFamily: 'SugoLight',
     },
     toolbar: {
       height: '100%',
@@ -58,6 +58,13 @@ export default function Navbar(props: NavbarProps) {
       document.removeEventListener('scroll', handleScroll);
     };
   }, [showNav]);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowSeparator(true);
+    }, 1800);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleScroll = () => {
     const scrolled = document.scrollingElement?.scrollTop;
@@ -96,9 +103,9 @@ export default function Navbar(props: NavbarProps) {
             marginLeft: 'auto',
             float: 'right',
             height: '100%',
-            display: 'table',
-            borderSpacing: 26,
-            borderCollapse: 'separate',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
         >
           {props.sections.map((sec, i) => (
@@ -119,15 +126,19 @@ export default function Navbar(props: NavbarProps) {
                 >
                   {sec.title}
                 </Typography>
-                {i !== props.sections.length - 1 && (
-                  <div
-                    style={{
-                      height: '100%',
-                      width: 2,
-                      background:
-                        'linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6)',
-                    }}
-                  />
+                {showSeparators && (
+                  <div>
+                    {i !== props.sections.length - 1 && (
+                      <div
+                        style={{
+                          height: '100%',
+                          width: 2,
+                          background:
+                            'linear-gradient(45deg, #082399, #4292cc, #ec6acc, #e808b6)',
+                        }}
+                      />
+                    )}
+                  </div>
                 )}
               </div>
             </Link>

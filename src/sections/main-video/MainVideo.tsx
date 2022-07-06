@@ -1,13 +1,9 @@
 import { Link, Typography } from '@mui/material';
-import axios from 'axios';
 import * as React from 'react';
 import { keyframes } from 'tss-react';
 import { makeStyles } from 'tss-react/mui';
-import StreamerDetails from '../../components/streamer-details/StreamerDetails';
-import StreamerGrid from '../../components/streamer-grid/StreamerGrid';
 import iris from '../../media/iris.mp4';
 import logo from '../../media/logo_draft.webp';
-import { StreamerObject } from '../../types/types';
 import logoMain from '../../media/logo_main.webp';
 
 const useStyles = makeStyles()((theme) => ({
@@ -48,11 +44,9 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-export interface MainVideoProps {
-  handleSeparators: (val: boolean) => void;
-}
+export interface MainVideoProps {}
 
-export const MainVideo: React.FC<MainVideoProps> = ({ handleSeparators }) => {
+export const MainVideo: React.FC<MainVideoProps> = ({}) => {
   const { classes } = useStyles();
 
   const [showVideo, setShowVideo] = React.useState<boolean>(false);
@@ -60,7 +54,6 @@ export const MainVideo: React.FC<MainVideoProps> = ({ handleSeparators }) => {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowVideo(true);
-      handleSeparators(true);
     }, 1800);
     return () => clearTimeout(timeout);
   }, []);

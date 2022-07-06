@@ -32,3 +32,10 @@ code {
     url(./fonts/SugoProDisplay-Regular.woff) format('woff');
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'SugoLight';
+  src: local('SugoProClassic-Light'),
+    url(./fonts/SugoProClassic-Light.woff2) format('woff2');
+  font-display: swap;
+}

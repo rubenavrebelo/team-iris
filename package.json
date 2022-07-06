@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-static-gzip": "^2.1.7",
+    "gzipper": "^7.1.0",
     "helmet": "^4.4.1",
     "html-react-parser": "^1.4.12",
     "jsonwebtoken": "^8.5.1",
@@ -45,7 +46,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && scp -r ./server/build/* root@188.166.122.193:~/phenomena/server/build",
+    "build": "react-scripts build && gzipper compress --verbose ./server/build && scp -r ./server/build/* root@188.166.122.193:~/phenomena/server/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",

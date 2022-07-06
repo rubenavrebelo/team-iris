@@ -15,7 +15,7 @@ export default function TextSection(props: TextSectionProps) {
   return (
     <div
       id={`${props.title.replace(/\s/g, '-').toLowerCase()}-section`}
-      style={{ marginTop: 70, textAlign: position ? position : 'left' }}
+      style={{ textAlign: position ? position : 'left' }}
     >
       <div className={'innerSection'}>
         <Typography
@@ -24,7 +24,7 @@ export default function TextSection(props: TextSectionProps) {
         >
           {props.title}
         </Typography>
-        <Typography style={{ paddingLeft: 10 }}>{parse(text)}</Typography>
+        <Typography>{parse(text)}</Typography>
       </div>
     </div>
   );
