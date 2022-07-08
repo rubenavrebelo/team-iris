@@ -11,6 +11,7 @@ import footbarBackground from '../../media/fundo_zolhos_brancos_sem_sombras2.png
 import { makeStyles } from 'tss-react/mui';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import './main.scss';
+import ProjectSection from '../../sections/project-section/ProjectSection';
 const footbarColor = grey[900];
 
 const useStyles = makeStyles()((theme) => ({
@@ -108,6 +109,14 @@ export default function PageDemo() {
             />
           </div>
         ))}
+      </div>
+      <div
+        style={{
+          width: '90%',
+          margin: '0 auto',
+        }}
+      >
+        <ProjectSection />
       </div>
       <footer className={classes.footbar}>
         <Typography className={classes.copyRights}>
