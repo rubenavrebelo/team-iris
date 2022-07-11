@@ -82,6 +82,20 @@ const writeImageAvatar = (src, title) => {
   return imagePath;
 };
 
+const writeProjectImage = (src, title) => {
+  let base64Image = src.split(';base64,').pop();
+  let imgBuffer = Buffer.from(base64Image, 'base64');
+  const imagePath = `projects/${path.parse(title).name}.webp`;
+
+  sharp(imgBuffer)
+    .resize(500, 500)
+    .webp()
+    .toFile('./public/' + imagePath);
+
+  return imagePath;
+};
+
+
 const updateProductByID = (id, cols) => {
   var query = ['UPDATE public.streamers'];
   query.push('SET');
@@ -309,7 +323,24 @@ app.delete('/projects/:id', async (req, res) => {
   res.send({});
 });
 
-app.put('/sections/:id', async (req, res) => {
+app.post('/projects', async (req, res) => {
+  const { title, image, description  } = req.body;
+  const imageBase64 = image.src;
+  const path = writeImageAvatar(imageBase64, image.title);
+  var queryConfig = {
+    text: 'INSERT into public.projects (title, description, image) VALUES ($1, $2, $3) RETURNING id',
+    values: [
+      title,
+      description,
+      'https://www.rubenrebelo.xyz/' + path,
+    ],
+  };
+
+  const results = await db.query(queryConfig);
+  res.send(results.rows[0]);  
+});
+
+app.put('/projects/:id', async (req, res) => {
   const { id, title, description } = req.body;
   const body = req.body;
   delete body.id;
