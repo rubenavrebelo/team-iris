@@ -112,6 +112,21 @@ const updateSectionsByID = (id, cols) => {
   return query.join(' ');
 };
 
+const updateProjectById = (id, cols) => {
+  var query = ['UPDATE public.projects'];
+  query.push('SET');
+
+  var set = [];
+  Object.keys(cols).forEach(function (key, i) {
+    set.push(key + ' = ($' + (i + 1) + ')');
+  });
+  query.push(set.join(', '));
+
+  query.push('WHERE id = ' + id + ' RETURNING *');
+
+  return query.join(' ');
+};
+
 app.get('/streamers', async (req, res) => {
   const results = await db.query('SELECT * FROM public.streamers ORDER BY id');
   res.header('Access-Control-Expose-Headers', 'X-Total-Count');
@@ -286,6 +301,32 @@ app.get('/projects/:id', async (req, res) => {
   res.set('X-Total-Count', results.rows.length);
   res.send(results.rows[0]);
 });
+
+app.delete('/projects/:id', async (req, res) => {
+  const results = await db.query(
+    `DELETE FROM public.projects WHERE id=${req.params.id}`
+  );
+  res.send({});
+});
+
+app.put('/sections/:id', async (req, res) => {
+  const { id, title, description } = req.body;
+  const body = req.body;
+  delete body.id;
+
+  const values = Object.keys(body).map(function (key) {
+    return req.body[key];
+  });
+
+  const queryConfig = {
+    text: updateProjectById(id, body),
+    values,
+  };
+
+  const results = await db.query(queryConfig);
+  res.send(results.rows[0]);
+});
+
 
 app.post('/login', (req, res, next) => {
   const { username, password } = req.body;
