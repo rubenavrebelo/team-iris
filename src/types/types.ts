@@ -14,6 +14,13 @@ export interface StreamerObject {
   role: string;
 }
 
+export interface ProjectObject {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+}
+
 export interface PronounsObject {
   [pronoun: string]: string;
 }

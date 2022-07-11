@@ -85,7 +85,7 @@ const writeImageAvatar = (src, title) => {
 const writeProjectImage = (src, title) => {
   let base64Image = src.split(';base64,').pop();
   let imgBuffer = Buffer.from(base64Image, 'base64');
-  const imagePath = `projects/${path.parse(title).name}.webp`;
+  const imagePath = `projectImages/${path.parse(title).name}.webp`;
 
   sharp(imgBuffer)
     .resize(500, 500)

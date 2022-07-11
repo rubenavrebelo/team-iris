@@ -40,25 +40,46 @@ const myDataProvider = {
       );
   },
   create: (resource: any, params: any) => {
-    if (resource !== 'streamers' || !params.data.avatar) {
-      return dataProvider.create(resource, params);
-    }
-    const newPicture = params.data.avatar;
+
+    if(resource === 'streamers' && params.data.avatar) {
+      const newPicture = params.data.avatar;
+
+      return Promise.resolve(convertFileToBase64(newPicture))
+        .then((picture64) => ({
+          src: picture64,
+          title: `${params.data.avatar.title}`,
+        }))
+        .then((transformedNewPictures) =>
+          dataProvider.create(resource, {
+            ...params,
+            data: {
+              ...params.data,
+              avatar: transformedNewPictures,
+            },
+          })
+        );
+    } else if (resource === 'Projects' && params.data.image) {
+      const newPicture = params.data.image;
 
     return Promise.resolve(convertFileToBase64(newPicture))
       .then((picture64) => ({
         src: picture64,
-        title: `${params.data.avatar.title}`,
+        title: `${params.data.image.title}`,
       }))
       .then((transformedNewPictures) =>
         dataProvider.create(resource, {
           ...params,
           data: {
             ...params.data,
-            avatar: transformedNewPictures,
+            image: transformedNewPictures,
           },
         })
       );
+    }
+    else {
+      return dataProvider.create(resource, params);
+    }
+    
   },
 };
 

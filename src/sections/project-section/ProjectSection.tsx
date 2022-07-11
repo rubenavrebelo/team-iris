@@ -1,5 +1,11 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useState } from 'react';
+import Carousel from 'react-material-ui-carousel'
+import _ from 'lodash';
+import React from 'react';
+import axios from 'axios';
+import { ProjectObject } from '../../types/types';
+import parse from 'html-react-parser';
 
 export interface TextSectionProps {
   title?: string;
@@ -8,47 +14,47 @@ export interface TextSectionProps {
 }
 
 export default function ProjectSection(props: TextSectionProps) {
-  const [showOverlay, setShowOverlay] = useState<boolean>(false);
+  const [showOverlay, setShowOverlay] = useState<string>('');
+  const [projects, setProjects] = useState<ProjectObject[]>([]);
 
-  const test = [1, 2, 3, 4, 5, 6, 7, 8];
-  return (
-    <div>
-      <Typography
-        variant={'h2'}
-        style={{ fontFamily: 'Sugo', letterSpacing: 0, marginBottom: 30 }}
-      >
-        Projetos
-      </Typography>
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      console.log('fetching');
+      const result = await axios.get(
+        `${process.env.REACT_APP_API_URL}projects`
+      );
+      console.log(result);
+      setProjects(result.data);
+    };
+
+    console.log(`${process.env.REACT_APP_API_URL}projects`)
+    if (projects.length === 0) fetchData();
+  }, [projects]);
+
+  const renderCarouselItems = () => {
+    return _.chunk(projects, 4).map((innerArr, arrI) => <Grid container>
+      {innerArr.map((proj, projI) => <Grid item xs={3}>
       <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          flexWrap: 'wrap',
-        }}
-      >
-        {test.map((test) => (
-          <div
             style={{
               textAlign: 'center',
               width: '20vw',
               height: '20vw',
-              marginRight: 16,
-              marginBottom: 42,
+              marginBottom: 16
             }}
           >
             <Box
-              onMouseEnter={() => setShowOverlay(true)}
-              onMouseLeave={() => setShowOverlay(false)}
+              onMouseEnter={() => setShowOverlay(`project-${arrI}-${projI}`)}
+              onMouseLeave={() => setShowOverlay('')}
               style={{
                 backgroundImage:
-                  'url(https://pbs.twimg.com/media/FWbU9APXEAUxnzi?format=jpg&name=small)',
+                  `url(${proj.image})`,
                 position: 'relative',
                 width: '100%',
                 height: '100%',
               }}
             >
-              {showOverlay && (
+              {showOverlay === `project-${arrI}-${projI}` && (
                 <div
                   style={{
                     position: 'absolute',
@@ -66,14 +72,32 @@ export default function ProjectSection(props: TextSectionProps) {
                   }}
                 >
                   <Typography style={{ color: 'white' }}>
-                    As tetas da MissCookieDoe e da Eevoh são colocadas à prova
+                    {parse(proj.description)}
                   </Typography>
                 </div>
               )}
             </Box>
-            <Typography style={{ fontFamily: 'Sugo' }}>Tetudas</Typography>
+            <Typography style={{ fontFamily: 'Sugo' }}>{proj.title}</Typography>
           </div>
-        ))}
+      </Grid>)}
+    </Grid>)
+  }
+
+  console.log(projects);
+  return (
+    <div>
+      <Typography
+        variant={'h2'}
+        style={{ fontFamily: 'Sugo', letterSpacing: 0, marginBottom: 30 }}
+      >
+        Projetos
+      </Typography>
+      <div
+        
+      >
+        <Carousel navButtonsAlwaysInvisible>
+        {renderCarouselItems()}
+        </Carousel>
       </div>
     </div>
   );

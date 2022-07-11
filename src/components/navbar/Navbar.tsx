@@ -91,7 +91,7 @@ export default function Navbar(props: NavbarProps) {
     <AppBar
       position={'fixed'}
       style={{
-        height: '8vh',
+        height: '11vh',
         backgroundColor: showNav ? navbarColor : 'transparent',
       }}
       elevation={0}
