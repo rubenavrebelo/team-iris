@@ -326,7 +326,7 @@ app.delete('/projects/:id', async (req, res) => {
 app.post('/projects', async (req, res) => {
   const { title, image, description  } = req.body;
   const imageBase64 = image.src;
-  const path = writeImageAvatar(imageBase64, image.title);
+  const path = writeProjectImage(imageBase64, image.title);
   var queryConfig = {
     text: 'INSERT into public.projects (title, description, image) VALUES ($1, $2, $3) RETURNING id',
     values: [
