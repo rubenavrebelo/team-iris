@@ -271,6 +271,22 @@ app.put('/sections/:id', async (req, res) => {
   res.send(results.rows[0]);
 });
 
+app.get('/projects', async (req, res) => {
+  const results = await db.query('SELECT * FROM public.projects ORDER BY id');
+  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+  res.set('X-Total-Count', results.rows.length);
+  res.send(results.rows);
+});
+
+app.get('/projects/:id', async (req, res) => {
+  const results = await db.query(
+    `SELECT * FROM public.projects WHERE id=${req.params.id}`
+  );
+  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+  res.set('X-Total-Count', results.rows.length);
+  res.send(results.rows[0]);
+});
+
 app.post('/login', (req, res, next) => {
   const { username, password } = req.body;
   const user = users.find((u) => {
