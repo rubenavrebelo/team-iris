@@ -13,6 +13,8 @@ import { StreamerEdit } from "./Streamers/StreamerEdit";
 import { defaultTheme } from 'react-admin';
 import { ProjectList } from "./Projects/ProjectList";
 import { ProjectCreate } from "./Projects/ProjectCreate";
+import { ProjectEdit } from "./Projects/ProjectEdit";
+
 const theme = {
     ...defaultTheme,
     palette: {
@@ -24,7 +26,7 @@ const theme = {
 const AdminPanel = () => <Admin theme={theme} dataProvider={myDataProvider} authProvider={authProvider} dashboard={Dashboard} requireAuth basename="/admin">
     <Resource name="streamers" list={StreamerList} edit={StreamerEdit} create={StreamerCreate} />
     <Resource name="Sections" list={SectionList} edit={SectionEdit} create={SectionCreate} />
-    <Resource name="Projects" list={ProjectList} create={ProjectCreate} />
+    <Resource name="Projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} />
 
 </Admin>
 export default AdminPanel;

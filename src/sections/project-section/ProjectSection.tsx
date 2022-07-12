@@ -7,13 +7,7 @@ import axios from 'axios';
 import { ProjectObject } from '../../types/types';
 import parse from 'html-react-parser';
 
-export interface TextSectionProps {
-  title?: string;
-  position?: 'right' | 'left' | 'center';
-  text?: string;
-}
-
-export default function ProjectSection(props: TextSectionProps) {
+export default function ProjectSection() {
   const [showOverlay, setShowOverlay] = useState<string>('');
   const [projects, setProjects] = useState<ProjectObject[]>([]);
 
