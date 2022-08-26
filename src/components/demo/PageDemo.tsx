@@ -12,7 +12,6 @@ import { makeStyles } from 'tss-react/mui';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import './main.scss';
 import ProjectSection from '../../sections/project-section/ProjectSection';
-const footbarColor = grey[900];
 
 const useStyles = makeStyles()((theme) => ({
   footbar: {
@@ -20,7 +19,6 @@ const useStyles = makeStyles()((theme) => ({
     width: '100%',
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: 25,
     background:
       'linear-gradient(65deg, rgba(8,35,153,1) 0%, rgba(232,8,182,1) 33%, rgba(66,146,204,1) 64%, rgba(236,106,204,1) 94%)',
     backgroundSize: '120%',
@@ -112,8 +110,13 @@ export default function PageDemo() {
       </div>
       <div
         style={{
-          width: '90%',
+          width: '100%',
           margin: '0 auto',
+          paddingLeft: '5vw',
+          paddingRight: '5vw',
+          boxSizing: 'border-box',
+          backgroundColor: '#fff5f7',
+          paddingBottom: 15,
         }}
       >
         <ProjectSection />

@@ -13,6 +13,9 @@
     width: 21vw;
     height: 21vw;
   }
+  &:hover {
+    box-shadow: 0px 0px 30px 5px rgba(76, 24, 135, 0.9);
+  }
 }
 
 .GradientBorder::after {
